@@ -8,21 +8,21 @@
 <body>
     <h1>Add new product</h1>
     <div>
-        <form th:object="${product}" th:action="@{/saveproduct}" action="#" method="post"></form>
+        <form th:object="${product}" th:action="@{/saveproduct}" action="#" method="post">
             <label for="name">Name</label>
-            <input type="name" id="name" th:field="*{name}" required/>
+            <input type="text" id="name" th:field="*{name}" required/>
             <br>
             <label for="type">Type</label>
-            <input type="type" id="type" th:field="*{type}" required/>
+            <input type="text" id="type" th:field="*{type}" required/>
             <br>
             <label type="color">Color</label>
-            <input type="color" id="color" th:field="*{color}" />
+            <input type="text" id="color" th:field="*{color}" />
             <br>
             <label for="size">Size</label>
-            <input type="size" id="size" th:field="*{size}" />
+            <input type="text" id="size" th:field="*{size}" />
             <br>
             <label for="price">Price</label>
-            <input type="price" id="price" th:field="*{price}" required/>
+            <input type="text" id="price" th:field="*{price}" required/>
             <br>
             <input type="submit" value="Add new product" />
         <form>

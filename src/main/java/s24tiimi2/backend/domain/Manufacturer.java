@@ -1,9 +1,14 @@
 package s24tiimi2.backend.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Manufacturer {
@@ -13,6 +18,11 @@ public class Manufacturer {
     private Long id;
 
 	private String name;
+
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy ="category")
+	private List<Product> products = new ArrayList<Product>();
+
 
 	public Manufacturer() {
 	}
@@ -42,6 +52,16 @@ public class Manufacturer {
 	@Override
 	public String toString() {
 		return "Manufacturer [id=" + id + ", name=" + name + "]";
+	}
+
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 
 	

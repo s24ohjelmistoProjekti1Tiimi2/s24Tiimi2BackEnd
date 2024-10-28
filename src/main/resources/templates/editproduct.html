@@ -1,0 +1,42 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Cool Shop - Edit Product</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Edit Product</h1>
+
+	<div>
+		<form th:object="${selectedProduct}" th:action="@{/savemodified}" action="#" method="post">
+
+			<input type="hidden" th:field="*{id}" class="form-control"/>
+
+			<label for="name">Title</label>
+			<input type="text" id="name" th:field="*{name}" />
+			<br/>
+			<label for="type">Author</label>
+			<input type="text" id="type" th:field="*{type}" />
+			<br/>
+
+			<label for="color">Year of Publication</label>
+			<input type="text" id="color" th:field="*{color}" />
+			<br/>
+
+			<label for="size">ISBN </label>
+			<input type="text" id="size" th:field="*{size}" />
+			<br/>
+			<label for="price">Price</label>
+			<input type="text" id="price" th:field="*{price}" />
+			<br/>
+
+			<br/>
+
+			<input type="submit" class="btn btn-success" value="Save"></input>
+		</form>
+	</div>
+
+
+</body>
+</html>

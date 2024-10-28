@@ -8,6 +8,8 @@ import s24tiimi2.backend.domain.Product;
 import s24tiimi2.backend.domain.ProductRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ProductController {
@@ -29,6 +31,22 @@ public class ProductController {
     @GetMapping("/delete-product/{id}")
     public String deleteProduct(@PathVariable("id") Long productId, Model model) {
         repository.deleteById(productId);
+        return "redirect:/productlist";
+    }
+
+
+
+    // FUNCTIONS ACTIVATED DURING THE EDITING OF BOOKS IN BOOKLIST.HTML AND EDITBOOK.HTML
+    
+    @RequestMapping(value = "/edit/{id}")
+    public String editBook(@PathVariable("id") Long prodId, Model model) {
+        model.addAttribute("selectedProduct", repository.findById(prodId));
+        return "editproduct";
+    }
+
+    @PostMapping(value = "/savemodified")
+    public String saveModified(Product newProd){
+        repository.save(newProd);
         return "redirect:/productlist";
     }
     

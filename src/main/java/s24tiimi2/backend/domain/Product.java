@@ -1,7 +1,5 @@
 package s24tiimi2.backend.domain;
 
-import java.util.Locale.Category;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
@@ -28,7 +26,7 @@ public class Product {
     @JoinColumn(name = "manufacturerId")
     private Manufacturer manufacturer;
 
-    public Product(String type, String color, String size, double price) {
+    public Product(String type, String color, String size, Double price) {
         super();
         this.type = type;
         this.color = color;
@@ -70,23 +68,14 @@ public class Product {
     public void setSize(String size) {
         this.size = size;
     }
-
-<<<<<<< HEAD
+    
     public Double getPrice() {
         return price;
     }
 
     public void setPrice(Double price) {
-=======
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
->>>>>>> b50bc6ab53bf9750548578d3d10e9cbad795aa98
         this.price = price;
     }
-
 
     public Manufacturer getManufacturer() {
         return manufacturer;
@@ -102,7 +91,4 @@ public class Product {
                 + "]";
     }
 
-
-    
-    
 }

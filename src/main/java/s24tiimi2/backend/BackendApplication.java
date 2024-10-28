@@ -22,11 +22,11 @@ public class BackendApplication {
 
 		return (arg) -> {
 
-			Product demo1 = new Product("collar", "green", "small", 12.49);
-			productRepo.save(demo1);
-
 			Manufacturer demo2 = new Manufacturer("name");
 			manufRepo.save(demo2);
+
+			Product demo1 = new Product("collar", "green", "small", 12.49, demo2);
+			productRepo.save(demo1);
 
 			for (Product product : productRepo.findAll()) {
 				System.out.println(product.toString());

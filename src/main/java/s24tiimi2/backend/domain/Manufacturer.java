@@ -1,7 +1,8 @@
 package s24tiimi2.backend.domain;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -21,7 +22,8 @@ public class Manufacturer {
 
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy ="manufacturer")
-	private List<Product> products = new ArrayList<Product>();
+	@JsonIgnoreProperties("manufacturer")
+	private List<Product> products;
 
 
 	public Manufacturer() {

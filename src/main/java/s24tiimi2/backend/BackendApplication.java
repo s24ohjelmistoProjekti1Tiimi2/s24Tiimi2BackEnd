@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import s24tiimi2.backend.domain.Manufacturer;
+import s24tiimi2.backend.domain.ManufacturerRepository;
 import s24tiimi2.backend.domain.Product;
 import s24tiimi2.backend.domain.ProductRepository;
 
@@ -16,15 +18,22 @@ public class BackendApplication {
 	}
 
 	@Bean
-	public CommandLineRunner products(ProductRepository productRepo) {
+	public CommandLineRunner products(ProductRepository productRepo, ManufacturerRepository manufRepo) {
 
 		return (arg) -> {
 
-			Product collar1 = new Product("collar", "green", "small", 12.49);
-			productRepo.save(collar1);
+			Product demo1 = new Product("collar", "green", "small", 12.49);
+			productRepo.save(demo1);
+
+			Manufacturer demo2 = new Manufacturer("name");
+			manufRepo.save(demo2);
 
 			for (Product product : productRepo.findAll()) {
 				System.out.println(product.toString());
+			}
+
+			for (Manufacturer manufacturer : manufRepo.findAll()) {
+				System.out.println(manufacturer.toString());
 			}
 
 		};

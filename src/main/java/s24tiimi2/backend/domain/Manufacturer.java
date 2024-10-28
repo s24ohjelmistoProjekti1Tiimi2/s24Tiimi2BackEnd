@@ -28,7 +28,7 @@ public class Manufacturer {
 	}
 
 	
-	public Manufacturer(Long id, String name) {
+	public Manufacturer(String name) {
 		super();
 		this.name = name;
 	}

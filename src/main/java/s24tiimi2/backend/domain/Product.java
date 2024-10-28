@@ -1,9 +1,15 @@
 package s24tiimi2.backend.domain;
 
+import java.util.Locale.Category;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Product {
@@ -16,8 +22,13 @@ public class Product {
     private String color;
     private String size;
     private Double price;
-    
-    public Product(String type, String color, String size, Double price) {
+
+    @ManyToOne
+    @JsonIgnoreProperties("products")
+    @JoinColumn(name = "manufacturerId")
+    private Manufacturer manufacturer;
+
+    public Product(String type, String color, String size, double price) {
         super();
         this.type = type;
         this.color = color;
@@ -60,19 +71,38 @@ public class Product {
         this.size = size;
     }
 
+<<<<<<< HEAD
     public Double getPrice() {
         return price;
     }
 
     public void setPrice(Double price) {
+=======
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+>>>>>>> b50bc6ab53bf9750548578d3d10e9cbad795aa98
         this.price = price;
     }
 
+
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+    
     @Override
     public String toString() {
         return "Product [id=" + id + ", type=" + type + ", color=" + color + ", size=" + size + ", price=" + price
                 + "]";
     }
+
+
     
     
 }

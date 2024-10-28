@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add product</title>
 </head>
+
 <body>
     <h1>Add new product</h1>
     <div>
         <form th:object="${product}" th:action="@{/saveproduct}" action="#" method="post">
             <label for="name">Name</label>
-            <input type="text" id="name" th:field="*{name}" required/>
+            <input type="text" id="name" th:field="*{name}" required />
             <br>
             <label for="type">Type</label>
-            <input type="text" id="type" th:field="*{type}" required/>
+            <input type="text" id="type" th:field="*{type}" required />
             <br>
             <label type="color">Color</label>
             <input type="text" id="color" th:field="*{color}" />
@@ -22,10 +24,17 @@
             <input type="text" id="size" th:field="*{size}" />
             <br>
             <label for="price">Price</label>
-            <input type="text" id="price" th:field="*{price}" required/>
+            <input type="text" id="price" th:field="*{price}" required />
+            <br>
+            <label for="manufacturer">Manufacturer</label>
+            <select id="manufacturer" th:field="*{manufacturer}" class="form-control">
+                <option th:each="manufacturer: ${manufacturer}" th:value="${manufacturer.id}"
+                    th:text="${manufacturer.name}"></option>
+            </select>
             <br>
             <input type="submit" value="Add new product" />
-        <form>
+            <form>
     </div>
 </body>
-</html> 
+
+</html>

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class ProductController {
     @Autowired
     private ProductRepository repository;
-    @Autowired
 
     @GetMapping("/productlist")
     public String getAllProductsList(Model model) {

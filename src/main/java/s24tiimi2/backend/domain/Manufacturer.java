@@ -20,7 +20,7 @@ public class Manufacturer {
 	private String name;
 
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy ="category")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy ="manufacturer")
 	private List<Product> products = new ArrayList<Product>();
 
 

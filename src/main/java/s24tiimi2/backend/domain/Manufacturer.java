@@ -19,15 +19,12 @@ public class Manufacturer {
 
 	private String name;
 
-
 	@OneToMany(cascade = CascadeType.ALL, mappedBy ="category")
 	private List<Product> products = new ArrayList<Product>();
-
 
 	public Manufacturer() {
 	}
 
-	
 	public Manufacturer(String name) {
 		super();
 		this.name = name;
@@ -54,11 +51,9 @@ public class Manufacturer {
 		return "Manufacturer [id=" + id + ", name=" + name + "]";
 	}
 
-
 	public List<Product> getProducts() {
 		return products;
 	}
-
 
 	public void setProducts(List<Product> products) {
 		this.products = products;

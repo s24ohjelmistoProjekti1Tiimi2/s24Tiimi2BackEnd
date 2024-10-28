@@ -7,11 +7,13 @@ import org.springframework.ui.Model;
 import s24tiimi2.backend.domain.Product;
 import s24tiimi2.backend.domain.ProductRepository;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ProductController {
     @Autowired
     private ProductRepository repository;
+    @Autowired
 
     @GetMapping("/productlist")
     public String getAllProductsList(Model model) {
@@ -23,5 +25,11 @@ public class ProductController {
     public String addNewProduct(Model model) {
         model.addAttribute("product", new Product());
         return "addproduct";
+    }
+
+    @PostMapping("/saveproduct")
+    public String saveNewProduct(Product product) {
+        repository.save(product);
+        return "redirect:/productlist";
     }
 }

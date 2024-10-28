@@ -8,6 +8,7 @@ import s24tiimi2.backend.domain.Product;
 import s24tiimi2.backend.domain.ProductRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class ProductController {
@@ -32,4 +33,11 @@ public class ProductController {
         repository.save(product);
         return "redirect:/productlist";
     }
+
+    @GetMapping("/delete-product/{id}")
+    public String deleteProduct(@PathVariable("id") Long productId, Model model) {
+        repository.deleteById(productId);
+        return "redirect:/productlist";
+    }
+    
 }

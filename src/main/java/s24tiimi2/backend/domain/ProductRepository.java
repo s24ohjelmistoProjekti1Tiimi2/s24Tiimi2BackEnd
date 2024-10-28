@@ -1,5 +1,6 @@
 package s24tiimi2.backend.domain;
+import org.springframework.data.repository.CrudRepository;
 
-public class ProductRepository {
+public interface ProductRepository extends CrudRepository<Product, Long> {
 
 }

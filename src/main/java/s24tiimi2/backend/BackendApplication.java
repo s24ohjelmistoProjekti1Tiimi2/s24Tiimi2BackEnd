@@ -25,7 +25,7 @@ public class BackendApplication {
 			Manufacturer demo2 = new Manufacturer("name");
 			manufRepo.save(demo2);
 
-			Product demo1 = new Product("collar", "green", "small", 12.49, demo2);
+			Product demo1 = new Product("demo1 collar", "collar", "green", "small", 12.49, demo2);
 			productRepo.save(demo1);
 
 			for (Product product : productRepo.findAll()) {

@@ -16,6 +16,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String name;
     private String type;
     private String color;
     private String size;
@@ -26,8 +27,9 @@ public class Product {
     @JoinColumn(name = "manufacturerId")
     private Manufacturer manufacturer;
 
-    public Product(String type, String color, String size, Double price, Manufacturer manufacturer) {
+    public Product(String name, String type, String color, String size, Double price, Manufacturer manufacturer) {
         super();
+        this.name = name;
         this.type = type;
         this.color = color;
         this.size = size;
@@ -41,9 +43,17 @@ public class Product {
     public Long getId() {
         return id;
     }
-
+    
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getType() {
@@ -88,7 +98,8 @@ public class Product {
     
     @Override
     public String toString() {
-        return "Product [id=" + id + ", type=" + type + ", color=" + color + ", size=" + size + ", price=" + price
+        return "Product [id=" + id + ", name=" + name + "type=" + type + ", color=" + color + ", size=" + size + ", price=" + price
                 + "]";
     }
+
 }

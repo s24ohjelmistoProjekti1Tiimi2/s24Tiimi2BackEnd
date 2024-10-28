@@ -1,4 +1,4 @@
-package s24tiimi2.backend;
+package s24tiimi2.backend.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

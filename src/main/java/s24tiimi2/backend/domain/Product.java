@@ -26,12 +26,13 @@ public class Product {
     @JoinColumn(name = "manufacturerId")
     private Manufacturer manufacturer;
 
-    public Product(String type, String color, String size, Double price) {
+    public Product(String type, String color, String size, Double price, Manufacturer manufacturer) {
         super();
         this.type = type;
         this.color = color;
         this.size = size;
         this.price = price;
+        this.manufacturer = manufacturer;
     }
 
     public Product() {
@@ -90,5 +91,4 @@ public class Product {
         return "Product [id=" + id + ", type=" + type + ", color=" + color + ", size=" + size + ", price=" + price
                 + "]";
     }
-
 }

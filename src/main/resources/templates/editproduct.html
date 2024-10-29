@@ -13,23 +13,29 @@
 
 			<input type="hidden" th:field="*{id}" class="form-control"/>
 
-			<label for="name">Title</label>
+			<label for="name">Name</label>
 			<input type="text" id="name" th:field="*{name}" />
 			<br/>
-			<label for="type">Author</label>
+			<label for="type">Type</label>
 			<input type="text" id="type" th:field="*{type}" />
 			<br/>
 
-			<label for="color">Year of Publication</label>
+			<label for="color">Color</label>
 			<input type="text" id="color" th:field="*{color}" />
 			<br/>
 
-			<label for="size">ISBN </label>
+			<label for="size">Size</label>
 			<input type="text" id="size" th:field="*{size}" />
 			<br/>
 			<label for="price">Price</label>
 			<input type="text" id="price" th:field="*{price}" />
 			<br/>
+
+			<label for="manufSelect">Manufacturer</label>
+            <select id="manufSelect" th:field="*{manufacturer}" class="form-control">
+                <option th:each="manuf: ${manufacturers}" th:value="${manuf.id}"
+                    th:text="${manuf.name}"></option>
+            </select>
 
 			<br/>
 

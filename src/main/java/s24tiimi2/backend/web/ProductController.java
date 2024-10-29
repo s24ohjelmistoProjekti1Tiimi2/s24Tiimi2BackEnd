@@ -52,6 +52,7 @@ public class ProductController {
     @RequestMapping(value = "/edit/{id}")
     public String editBook(@PathVariable("id") Long prodId, Model model) {
         model.addAttribute("selectedProduct", repository.findById(prodId));
+        model.addAttribute("manufacturers", manufRepo.findAll());
         return "editproduct";
     }
 

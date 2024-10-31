@@ -23,10 +23,10 @@
             <td th:text="${product.size}"></td>
             <td th:text="${product.price}"></td>
             <td th:text="${product.manufacturer.name}"></td>
-            <td><a th:href="@{/delete-product/{id}(id=${product.id})}">Delete</a></td>
+            <td><a th:href="@{/delete-product/{id}(id=${product.id})}"><button type="button" class="btn btn-primary">Delete</button></a></td>
             <td><a th:href="@{/edit/{id}(id=${product.id})}"><button type="button" class="btn btn-primary">Edit</button></a></td>
         </tr>
     </table>
-    <a href="/addproduct">Add new product</a>
+    <a href="/addproduct"><button type="button" class="btn btn-primary">Add new product</button></a>
 </body>
 </html>

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ProductController {
-    
+
     @Autowired
     private ProductRepository repository;
     @Autowired
@@ -25,7 +25,7 @@ public class ProductController {
         model.addAttribute("products", repository.findAll());
         return "productlist";
     }
-    
+
     @GetMapping("/addproduct")
     public String addNewProduct(Model model) {
         model.addAttribute("product", new Product());
@@ -45,10 +45,9 @@ public class ProductController {
         return "redirect:/productlist";
     }
 
+    // FUNCTIONS ACTIVATED DURING THE EDITING OF BOOKS IN BOOKLIST.HTML AND
+    // EDITBOOK.HTML
 
-
-    // FUNCTIONS ACTIVATED DURING THE EDITING OF BOOKS IN BOOKLIST.HTML AND EDITBOOK.HTML
-    
     @RequestMapping(value = "/edit/{id}")
     public String editBook(@PathVariable("id") Long prodId, Model model) {
         model.addAttribute("selectedProduct", repository.findById(prodId));
@@ -57,9 +56,9 @@ public class ProductController {
     }
 
     @PostMapping(value = "/savemodified")
-    public String saveModified(Product newProd){
+    public String saveModified(Product newProd) {
         repository.save(newProd);
         return "redirect:/productlist";
     }
-    
+
 }

@@ -15,12 +15,12 @@ import jakarta.persistence.OneToMany;
 public class Manufacturer {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
 	private String name;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy ="manufacturer")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "manufacturer")
 	@JsonIgnoreProperties("manufacturer")
 	private List<Product> products;
 

@@ -43,11 +43,11 @@ public class Product {
     public Long getId() {
         return id;
     }
-    
+
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -79,7 +79,7 @@ public class Product {
     public void setSize(String size) {
         this.size = size;
     }
-    
+
     public Double getPrice() {
         return price;
     }
@@ -95,10 +95,11 @@ public class Product {
     public void setManufacturer(Manufacturer manufacturer) {
         this.manufacturer = manufacturer;
     }
-    
+
     @Override
     public String toString() {
-        return "Product [id=" + id + ", name=" + name + "type=" + type + ", color=" + color + ", size=" + size + ", price=" + price
+        return "Product [id=" + id + ", name=" + name + "type=" + type + ", color=" + color + ", size=" + size
+                + ", price=" + price
                 + "]";
     }
 

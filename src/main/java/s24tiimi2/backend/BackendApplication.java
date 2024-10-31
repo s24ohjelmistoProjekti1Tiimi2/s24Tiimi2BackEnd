@@ -1,5 +1,7 @@
 package s24tiimi2.backend;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,21 +19,23 @@ public class BackendApplication {
 		SpringApplication.run(BackendApplication.class, args);
 	}
 
+	private static final Logger log = LoggerFactory.getLogger(BackendApplication.class);
+
 	@Bean
 	public CommandLineRunner products(ProductRepository productRepo, ManufacturerRepository manufRepo) {
 
 		return (arg) -> {
 
-			Manufacturer demo2 = new Manufacturer("name");
+			Manufacturer demo2 = new Manufacturer("Feel active");
 			manufRepo.save(demo2);
 
-			Product demo1 = new Product("demo1 collar", "collar", "green", "small", 12.49, demo2);
+			Product demo1 = new Product("Padded collar", "collar", "black", "small", 14.49, demo2);
 			productRepo.save(demo1);
 
+			log.info("print demos");
 			for (Product product : productRepo.findAll()) {
 				System.out.println(product.toString());
 			}
-
 			for (Manufacturer manufacturer : manufRepo.findAll()) {
 				System.out.println(manufacturer.toString());
 			}

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
+import s24tiimi2.backend.domain.Manufacturer;
 import s24tiimi2.backend.domain.ManufacturerRepository;
 import s24tiimi2.backend.domain.Product;
 import s24tiimi2.backend.domain.ProductRepository;
@@ -42,6 +43,19 @@ public class ProductController {
     @GetMapping("/delete-product/{id}")
     public String deleteProduct(@PathVariable("id") Long productId, Model model) {
         repository.deleteById(productId);
+        return "redirect:/productlist";
+    }
+
+    //Manufacturer endpoints
+    @GetMapping("/addmanufacturer")
+    public String addNewManufacturer(Model model) {
+        model.addAttribute("manufacturer", new Manufacturer());
+        return "addmanufacturer";
+    }
+
+    @PostMapping("/savemanufacturer")
+    public String saveNewManufacturer(Manufacturer manufacturer) {
+        manufRepo.save(manufacturer);
         return "redirect:/productlist";
     }
 

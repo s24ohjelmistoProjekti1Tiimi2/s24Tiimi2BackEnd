@@ -28,6 +28,7 @@ public class Type {
     @JsonIgnoreProperties("type")
     private List<Product> products;
 
+    @Pattern(regexp="S|M|L")
     private String size;
 
     public Type() {

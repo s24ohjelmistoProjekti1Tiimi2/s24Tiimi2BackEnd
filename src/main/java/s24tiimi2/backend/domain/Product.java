@@ -19,7 +19,6 @@ public class Product {
 
     private String name;
     private String color;
-    private String size;
 
     private Double price;
 
@@ -35,10 +34,9 @@ public class Product {
     @NotNull
     private Type type;
 
-    public Product(String name, String color, String size, Double price, Manufacturer manufacturer, Type type) {
+    public Product(String name, String color, Double price, Manufacturer manufacturer, Type type) {
         this.name = name;
         this.color = color;
-        this.size = size;
         this.price = price;
         this.manufacturer = manufacturer;
         this.type = type;
@@ -71,14 +69,6 @@ public class Product {
         this.color = color;
     }
 
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
     public Double getPrice() {
         return price;
     }
@@ -105,8 +95,8 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product [id=" + id + ", name=" + name + ", color=" + color + ", size=" + size
-                + ", price=" + price + "]";
+        return "Product [id=" + id + ", name=" + name + ", color=" + color + ", price=" + price + ", manufacturer="
+                + manufacturer + ", type=" + type + "]";
     }
 
 }

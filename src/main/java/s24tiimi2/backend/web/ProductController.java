@@ -8,6 +8,8 @@ import s24tiimi2.backend.domain.Manufacturer;
 import s24tiimi2.backend.domain.ManufacturerRepository;
 import s24tiimi2.backend.domain.Product;
 import s24tiimi2.backend.domain.ProductRepository;
+import s24tiimi2.backend.domain.TypeRepository;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +22,8 @@ public class ProductController {
     private ProductRepository repository;
     @Autowired
     private ManufacturerRepository manufRepo;
+    @Autowired
+    private TypeRepository typeRepo;
 
     @GetMapping("/productlist")
     public String getAllProductsList(Model model) {
@@ -31,6 +35,7 @@ public class ProductController {
     public String addNewProduct(Model model) {
         model.addAttribute("product", new Product());
         model.addAttribute("manufacturer", manufRepo.findAll());
+        model.addAttribute("type", typeRepo.findAll());
         return "addproduct";
     }
 
@@ -66,6 +71,7 @@ public class ProductController {
     public String editBook(@PathVariable("id") Long prodId, Model model) {
         model.addAttribute("selectedProduct", repository.findById(prodId));
         model.addAttribute("manufacturers", manufRepo.findAll());
+        model.addAttribute("types", typeRepo.findAll());
         return "editproduct";
     }
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,9 +20,17 @@ public class ProductRestController {
 	private ProductRepository repository;
 
 	// RESTful service to get all products
-	@GetMapping("/api/products")
+	@GetMapping("/rest/products")
 	public @ResponseBody List<Product> productListRest() {
 		return (List<Product>) repository.findAll();
+	}
+
+	// RESTful service to get all products
+	@GetMapping("/rest/products/type/{typename}")
+	public @ResponseBody List<Product> productsByTypeRest(@PathVariable String typename) {
+
+		String nameLower = typename.toLowerCase();
+		return (List<Product>) repository.findAllByType_Name(nameLower);
 	}
 
 }

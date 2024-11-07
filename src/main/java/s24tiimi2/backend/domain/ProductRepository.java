@@ -7,5 +7,5 @@ import org.springframework.data.repository.query.Param;
 
 public interface ProductRepository extends CrudRepository<Product, Long> {
 
-	List<Product> findAllByType_Name(@Param("name") String userName);
+	List<Product> findAllByType_Name(@Param("name") String name);
 }

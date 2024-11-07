@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Product {
@@ -17,7 +18,6 @@ public class Product {
     private Long id;
 
     private String name;
-    private String type;
     private String color;
     private String size;
 
@@ -26,16 +26,22 @@ public class Product {
     @ManyToOne
     @JsonIgnoreProperties("products")
     @JoinColumn(name = "manufacturerId")
+    @NotNull
     private Manufacturer manufacturer;
 
-    public Product(String name, String type, String color, String size, Double price, Manufacturer manufacturer) {
-        super();
+    @ManyToOne
+    @JsonIgnoreProperties("products")
+    @JoinColumn(name = "typeId")
+    @NotNull
+    private Type type;
+
+    public Product(String name, String color, String size, Double price, Manufacturer manufacturer, Type type) {
         this.name = name;
-        this.type = type;
         this.color = color;
         this.size = size;
         this.price = price;
         this.manufacturer = manufacturer;
+        this.type = type;
     }
 
     public Product() {
@@ -55,14 +61,6 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getColor() {
@@ -97,11 +95,18 @@ public class Product {
         this.manufacturer = manufacturer;
     }
 
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
-        return "Product [id=" + id + ", name=" + name + "type=" + type + ", color=" + color + ", size=" + size
-                + ", price=" + price
-                + "]";
+        return "Product [id=" + id + ", name=" + name + ", color=" + color + ", size=" + size
+                + ", price=" + price + "]";
     }
 
 }

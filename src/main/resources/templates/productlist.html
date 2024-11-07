@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product List</title>
-  </head>
-  <body>
-    <h1>Products</h1>
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Color</th>
-        <th>Size</th>
-        <th>Price</th>
-        <th>Manufacturer</th>
-      </tr>
-      <tr th:each="product : ${products}">
-        <td th:text="${product.name}"></td>
-        <td th:text="${product.type}"></td>
-        <td th:text="${product.color}"></td>
-        <td th:text="${product.size}"></td>
-        <td th:text="${product.price}"></td>
-        <td th:text="${product.manufacturer.name}"></td>
-        <td>
-          <a th:href="@{/delete-product/{id}(id=${product.id})}"
-            ><button type="button" class="btn btn-primary">Delete</button></a
-          >
-        </td>
-        <td>
-          <a th:href="@{/edit/{id}(id=${product.id})}"
-            ><button type="button" class="btn btn-primary">Edit</button></a
-          >
-        </td>
-      </tr>
-    </table>
-    <a href="/addproduct"
-      ><button type="button" class="btn btn-primary">Add new product</button></a
-    >
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product List</title>
+</head>
+
+<body>
+  <h1>Products</h1>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Color</th>
+      <th>Size</th>
+      <th>Price</th>
+      <th>Manufacturer</th>
+    </tr>
+    <tr th:each="product : ${products}">
+      <td th:text="${product.name}"></td>
+      <td th:text="${product.type}"></td>
+      <td th:text="${product.color}"></td>
+      <td th:text="${product.size}"></td>
+      <td th:text="${product.price}"></td>
+      <td th:text="${product.manufacturer.name}"></td>
+      <td>
+        <a th:href="@{/delete-product/{id}(id=${product.id})}"><button type="button"
+            class="btn btn-primary">Delete</button></a>
+      </td>
+      <td>
+        <a th:href="@{/edit/{id}(id=${product.id})}"><button type="button" class="btn btn-primary">Edit</button></a>
+      </td>
+    </tr>
+  </table>
+  <a href="/addproduct"><button type="button" class="btn btn-primary">Add new product</button></a>
+  <a href="/addmanufacturer"><button type="button" class="btn btn-primary">Add new manufacturer</button></a>
+</body>
+
 </html>

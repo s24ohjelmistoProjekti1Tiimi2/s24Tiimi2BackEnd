@@ -20,6 +20,7 @@ public class Product {
     private String type;
     private String color;
     private String size;
+
     private Double price;
 
     @ManyToOne

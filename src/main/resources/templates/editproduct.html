@@ -10,12 +10,16 @@
 	<h1>Edit Product</h1>
 
 	<div>
-		<form th:object="${selectedProduct}" th:action="@{/savemodified}" action="#" method="post">
-
-			<input type="hidden" th:field="*{id}" class="form-control"/>
+		<form th:object="${product}" th:action="@{/savemodified}" action="#" method="post">
+			<!-- Hidden field for productId -->
+			<input type="hidden" th:field="*{id}" />
+			<!-- Hidden field for typeId -->
+			<input type="hidden" th:field="*{type.id}" />
+			<!-- Hidden field for manufacturerId -->
+			<input type="hidden" th:field="*{manufacturer.id}" />
 
 			<label for="name">Name</label>
-				<input type="text" id="name" th:field="*{name}" />
+				<input type="text" id="productName" th:field="*{name}" />
 			<br>
 				<label for="type">Type</label>
 				<input type="text" id="type" th:field="*{type.name}" />
@@ -29,10 +33,9 @@
 			<label for="price">Price</label>
 				<input type="text" id="price" th:field="*{price}" />
 			<br>
-			<label for="manufSelect">Manufacturer</label>
-				<select id="manufSelect" th:field="*{manufacturer}" class="form-control">
-					<option th:each="manuf: ${manufacturers}" th:value="${manuf.id}"
-						th:text="${manuf.name}"></option>
+			<label for="manufacturerlist">Manufacturer</label>
+				<select id="manufacturerlist" th:field="*{manufacturer}" class="form-control" required >
+					<option th:each="manufacturer: ${manufacturers}" th:value="${manufacturer.id}" th:text="${manufacturer.name}"></option>
 				</select>
 			<br>
 

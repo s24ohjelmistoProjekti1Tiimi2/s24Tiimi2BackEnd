@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product List</title>
+</head>
+
+<body>
+  <h1>Manufacturers</h1>
+  <table>
+    <tr>
+      <th>Name</th>
+    </tr>
+    <tr th:each="manufacturer : ${manufacturers}">
+      <td th:text="${manufacturer.name}"></td>
+      <td>
+        <a th:href="@{/delete-manufacturer/{id}(id=${manufacturer.id})}"><button type="button"
+            class="btn btn-primary">Delete</button></a>
+      </td>
+    </tr>
+  </table>
+  <a href="/addmanufacturer"><button type="button" class="btn btn-primary">Add new manufacturer</button></a>
+</body>
+
+</html>

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class ProductController {
@@ -30,6 +32,7 @@ public class ProductController {
         model.addAttribute("products", repository.findAll());
         return "productlist";
     }
+    
 
     @GetMapping("/addproduct")
     public String addNewProduct(Model model) {
@@ -52,6 +55,12 @@ public class ProductController {
     }
 
     //Manufacturer endpoints
+    @GetMapping("/manufacturerlist")
+    public String getAllManufacturersList(Model model) {
+        model.addAttribute("manufacturers", manufRepo.findAll());
+        return "manufacturerlist";
+    }
+
     @GetMapping("/addmanufacturer")
     public String addNewManufacturer(Model model) {
         model.addAttribute("manufacturer", new Manufacturer());
@@ -61,7 +70,13 @@ public class ProductController {
     @PostMapping("/savemanufacturer")
     public String saveNewManufacturer(Manufacturer manufacturer) {
         manufRepo.save(manufacturer);
-        return "redirect:/productlist";
+        return "redirect:/manufacturerlist";
+    }
+
+    @GetMapping("/delete-manufacturer/{id}")
+    public String deleteManufacturer(@PathVariable("id") Long manufacturerId, Model model) {
+        repository.deleteById(manufacturerId);
+        return "redirect:/manufacturerlist";
     }
 
     // FUNCTIONS ACTIVATED DURING THE EDITING OF BOOKS IN BOOKLIST.HTML AND

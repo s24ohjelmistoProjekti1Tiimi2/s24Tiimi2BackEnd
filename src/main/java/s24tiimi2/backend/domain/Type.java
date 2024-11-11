@@ -12,7 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 
 @Entity
 public class Type {
@@ -27,9 +26,6 @@ public class Type {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "type")
     @JsonIgnoreProperties("type")
     private List<Product> products;
-
-    @Pattern(regexp="S|M|L")
-    private String size;
 
     public Type() {
     }

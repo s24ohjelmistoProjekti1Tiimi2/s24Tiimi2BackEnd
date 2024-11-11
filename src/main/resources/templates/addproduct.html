@@ -15,21 +15,30 @@
             <input type="text" id="name" th:field="*{name}" required />
             <br>
             <label for="type">Type</label>
-            <input type="text" id="type" th:field="*{type}" required />
+            <select id="type" th:field="*{type}" class="form-control">
+                <option value="" disabled selected>Select Type</option>
+                <option th:each="type: ${type}" th:value="${type.id}"
+                    th:text="${type.name}"></option>
+            </select>
             <br>
             <label type="color">Color</label>
             <input type="text" id="color" th:field="*{color}" />
             <br>
             <label for="size">Size</label>
-            <input type="text" id="size" th:field="*{size}" />
+            <select id="size" th:field="*{size}" class="form-control">
+                <option value="" disabled selected>Select Size</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+            </select>
             <br>
             <label for="price">Price</label>
             <input type="text" id="price" th:field="*{price}" required />
             <br>
             <label for="manufacturer">Manufacturer</label>
             <select id="manufacturer" th:field="*{manufacturer}" class="form-control">
-                <option th:each="manufacturer: ${manufacturer}" th:value="${manufacturer.id}"
-                    th:text="${manufacturer.name}"></option>
+                <option value="" disabled selected>Select Manufacturer</option>
+                <option th:each="manufacturer: ${manufacturer}" th:value="${manufacturer.id}" th:text="${manufacturer.name}"></option>
             </select>
             <br>
             <input type="submit" value="Add new product" />

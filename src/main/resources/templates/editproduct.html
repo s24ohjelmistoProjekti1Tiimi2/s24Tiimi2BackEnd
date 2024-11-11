@@ -2,8 +2,9 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Cool Shop - Edit Product</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
 </head>
 <body>
 	<h1>Edit Product</h1>
@@ -14,30 +15,26 @@
 			<input type="hidden" th:field="*{id}" class="form-control"/>
 
 			<label for="name">Name</label>
-			<input type="text" id="name" th:field="*{name}" />
-			<br/>
-			<label for="type">Type</label>
-			<input type="text" id="type" th:field="*{type}" />
-			<br/>
-
+				<input type="text" id="name" th:field="*{name}" />
+			<br>
+				<label for="type">Type</label>
+				<input type="text" id="type" th:field="*{type.name}" />
+			<br>
 			<label for="color">Color</label>
-			<input type="text" id="color" th:field="*{color}" />
-			<br/>
-
+				<input type="text" id="color" th:field="*{color}" />
+			<br>
 			<label for="size">Size</label>
-			<input type="text" id="size" th:field="*{size}" />
-			<br/>
+				<input type="text" id="size" th:field="*{size}" />
+			<br>
 			<label for="price">Price</label>
-			<input type="text" id="price" th:field="*{price}" />
-			<br/>
-
+				<input type="text" id="price" th:field="*{price}" />
+			<br>
 			<label for="manufSelect">Manufacturer</label>
-            <select id="manufSelect" th:field="*{manufacturer}" class="form-control">
-                <option th:each="manuf: ${manufacturers}" th:value="${manuf.id}"
-                    th:text="${manuf.name}"></option>
-            </select>
-
-			<br/>
+				<select id="manufSelect" th:field="*{manufacturer}" class="form-control">
+					<option th:each="manuf: ${manufacturers}" th:value="${manuf.id}"
+						th:text="${manuf.name}"></option>
+				</select>
+			<br>
 
 			<input type="submit" class="btn btn-success" value="Save"></input>
 		</form>

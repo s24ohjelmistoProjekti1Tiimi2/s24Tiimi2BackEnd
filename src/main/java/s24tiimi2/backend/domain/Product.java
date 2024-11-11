@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 public class Product {
@@ -22,6 +23,9 @@ public class Product {
 
     private Double price;
 
+    @Pattern(regexp = "S|M|L")
+    private String size;
+
     @ManyToOne
     @JsonIgnoreProperties("products")
     @JoinColumn(name = "manufacturerId")
@@ -34,10 +38,12 @@ public class Product {
     @NotNull
     private Type type;
 
-    public Product(String name, String color, Double price, Manufacturer manufacturer, Type type) {
+    public Product(String name, String color, Double price, String size, Manufacturer manufacturer, Type type) {
+        super();
         this.name = name;
         this.color = color;
         this.price = price;
+        this.size = size;
         this.manufacturer = manufacturer;
         this.type = type;
     }
@@ -77,6 +83,14 @@ public class Product {
         this.price = price;
     }
 
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
     public Manufacturer getManufacturer() {
         return manufacturer;
     }
@@ -95,8 +109,8 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product [id=" + id + ", name=" + name + ", color=" + color + ", price=" + price + ", manufacturer="
-                + manufacturer + ", type=" + type + "]";
+        return "Product [id=" + id + ", name=" + name + ", color=" + color + ", price=" + price + ", size=" + size
+                + ", manufacturer=" + manufacturer + ", type=" + type + "]";
     }
 
 }

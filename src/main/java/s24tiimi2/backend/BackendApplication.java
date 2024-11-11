@@ -38,7 +38,7 @@ public class BackendApplication {
 			typeRepo.save(toy);
 			typeRepo.save(food);
 
-			Product demo1 = new Product("Padded collar", "black", 14.49, demo2, clothing);
+			Product demo1 = new Product("Padded collar", "black", 14.49, "S", demo2, clothing);
 			productRepo.save(demo1);
 
 			log.info("print demos");

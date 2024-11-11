@@ -15,11 +15,10 @@
                 <input type="text" id="name" th:field="*{name}" required />
             <br>
             <label for="type">Type</label>
-                <select id="type" th:field="*{type}" class="form-control">
-                    <option value="" disabled selected>Select Type</option>
-                    <option th:each="type: ${type}" th:value="${type.id}"
-                        th:text="${type.name}"></option>
-                </select>
+            <select id="type" th:field="*{type}" class="form-control">
+                <option value="" disabled selected>Select Type</option>
+                <option th:each="type: ${type}" th:value="${type.id}" th:text="${type.name}"></option>
+            </select>
             <br>
             <label type="color">Color</label>
             <input type="text" id="color" th:field="*{color}" />
@@ -38,7 +37,8 @@
             <label for="manufacturer">Manufacturer</label>
             <select id="manufacturer" th:field="*{manufacturer}" class="form-control">
                 <option value="" disabled selected>Select Manufacturer</option>
-                <option th:each="manufacturer: ${manufacturer}" th:value="${manufacturer.id}" th:text="${manufacturer.name}"></option>
+                <option th:each="manufacturer: ${manufacturer}" th:value="${manufacturer.id}"
+                    th:text="${manufacturer.name}"></option>
             </select>
             <br>
             <input type="submit" value="Add new product" />

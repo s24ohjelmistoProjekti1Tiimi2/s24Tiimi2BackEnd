@@ -8,6 +8,7 @@ import s24tiimi2.backend.domain.Manufacturer;
 import s24tiimi2.backend.domain.ManufacturerRepository;
 import s24tiimi2.backend.domain.Product;
 import s24tiimi2.backend.domain.ProductRepository;
+import s24tiimi2.backend.domain.Type;
 import s24tiimi2.backend.domain.TypeRepository;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -84,15 +85,15 @@ public class ProductController {
 
     @RequestMapping(value = "/edit/{id}")
     public String editBook(@PathVariable("id") Long prodId, Model model) {
-        model.addAttribute("selectedProduct", repository.findById(prodId));
+        model.addAttribute("product", repository.findById(prodId));
         model.addAttribute("manufacturers", manufRepo.findAll());
         model.addAttribute("types", typeRepo.findAll());
         return "editproduct";
     }
 
     @PostMapping(value = "/savemodified")
-    public String saveModified(Product newProd) {
-        repository.save(newProd);
+    public String saveModified(Product product) {
+        repository.save(product);
         return "redirect:/productlist";
     }
 

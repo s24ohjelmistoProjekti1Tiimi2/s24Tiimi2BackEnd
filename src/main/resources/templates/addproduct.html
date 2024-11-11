@@ -14,9 +14,8 @@
             <label for="name">Name</label>
                 <input type="text" id="name" th:field="*{name}" required />
             <br>
-            <label for="type">Type</label>
-            <select id="type" th:field="*{type}" class="form-control">
-                <option value="" disabled selected>Select Type</option>
+            <label for="typelist">Type</label>
+            <select id="typelist" th:field="*{type}" class="form-control" required >
                 <option th:each="type: ${type}" th:value="${type.id}" th:text="${type.name}"></option>
             </select>
             <br>
@@ -25,7 +24,7 @@
             <br>
             <label for="size">Size</label>
             <select id="size" th:field="*{size}" class="form-control">
-                <option value="" disabled selected>Select Size</option>
+                <option value="">-</option>
                 <option value="S">S</option>
                 <option value="M">M</option>
                 <option value="L">L</option>
@@ -36,7 +35,6 @@
             <br>
             <label for="manufacturer">Manufacturer</label>
             <select id="manufacturer" th:field="*{manufacturer}" class="form-control">
-                <option value="" disabled selected>Select Manufacturer</option>
                 <option th:each="manufacturer: ${manufacturer}" th:value="${manufacturer.id}"
                     th:text="${manufacturer.name}"></option>
             </select>

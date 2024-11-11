@@ -80,11 +80,8 @@ public class ProductController {
         return "redirect:/manufacturerlist";
     }
 
-    // FUNCTIONS ACTIVATED DURING THE EDITING OF BOOKS IN BOOKLIST.HTML AND
-    // EDITBOOK.HTML
-
     @RequestMapping(value = "/edit/{id}")
-    public String editBook(@PathVariable("id") Long prodId, Model model) {
+    public String editProduct(@PathVariable("id") Long prodId, Model model) {
         model.addAttribute("product", repository.findById(prodId));
         model.addAttribute("manufacturers", manufRepo.findAll());
         model.addAttribute("types", typeRepo.findAll());

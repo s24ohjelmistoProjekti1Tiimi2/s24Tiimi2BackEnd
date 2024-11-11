@@ -13,22 +13,25 @@
 		<form th:object="${product}" th:action="@{/savemodified}" action="#" method="post">
 			<!-- Hidden field for productId -->
 			<input type="hidden" th:field="*{id}" />
-			<!-- Hidden field for typeId -->
-			<input type="hidden" th:field="*{type.id}" />
-			<!-- Hidden field for manufacturerId -->
-			<input type="hidden" th:field="*{manufacturer.id}" />
 
 			<label for="name">Name</label>
 				<input type="text" id="productName" th:field="*{name}" />
 			<br>
-				<label for="type">Type</label>
-				<input type="text" id="type" th:field="*{type.name}" />
+			<label for="typelist">Type</label>
+				<select id="typelist" th:field="*{type}" class="form-control" required >
+					<option th:each="type: ${types}" th:value="${type.id}" th:text="${type.name}"></option>
+				</select>
 			<br>
 			<label for="color">Color</label>
 				<input type="text" id="color" th:field="*{color}" />
 			<br>
 			<label for="size">Size</label>
-				<input type="text" id="size" th:field="*{size}" />
+            <select id="size" th:field="*{size}" class="form-control">
+                <option value="">-</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+            </select>
 			<br>
 			<label for="price">Price</label>
 				<input type="text" id="price" th:field="*{price}" />

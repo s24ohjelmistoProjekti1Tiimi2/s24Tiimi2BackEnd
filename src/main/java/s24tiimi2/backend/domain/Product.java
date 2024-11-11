@@ -8,8 +8,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
+//import jakarta.validation.constraints.NotNull;
+//import jakarta.validation.constraints.Pattern;
 
 @Entity
 public class Product {
@@ -23,7 +23,7 @@ public class Product {
 
     private Double price;
 
-    @Pattern(regexp = "S|M|L")
+    //@Pattern(regexp = "S|M|L|-")
     private String size;
 
     @ManyToOne

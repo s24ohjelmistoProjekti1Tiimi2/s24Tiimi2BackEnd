@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 //import jakarta.validation.constraints.NotNull;
 //import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Product {
@@ -18,9 +19,10 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotNull
     private String name;
+    
     private String color;
-
     private Double price;
 
     //@Pattern(regexp = "S|M|L|-")

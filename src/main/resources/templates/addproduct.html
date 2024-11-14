@@ -17,7 +17,7 @@
             <br>
             <label for="typelist">Type</label>
                 <select id="typelist" th:field="*{type}" class="form-control" required >
-                    <option th:each="type: ${type}" th:value="${type.id}" th:text="${type.name}"></option>
+                    <option th:each="type: ${types}" th:value="${type.id}" th:text="${type.name}"></option>
                 </select>
             <br>
             <label type="color">Color</label>
@@ -37,7 +37,7 @@
             <br>
             <label for="manufacturer">Manufacturer</label>
             <select id="manufacturer" th:field="*{manufacturer}" class="form-control">
-                <option th:each="manufacturer: ${manufacturer}" th:value="${manufacturer.id}"
+                <option th:each="manufacturer: ${manufacturers}" th:value="${manufacturer.id}"
                     th:text="${manufacturer.name}"></option>
             </select>
             <br>

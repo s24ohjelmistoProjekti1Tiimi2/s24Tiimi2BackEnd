@@ -39,15 +39,17 @@ public class ProductController {
     @GetMapping("/addproduct")
     public String addNewProduct(Model model) {
         model.addAttribute("product", new Product());
-        model.addAttribute("manufacturer", manufacturerRepository.findAll());
-        model.addAttribute("type", typeRepository.findAll());
+        model.addAttribute("manufacturers", manufacturerRepository.findAll());
+        model.addAttribute("types", typeRepository.findAll());
         return "addproduct";
     }
 
     // Save new product
     @PostMapping("/saveproduct")
-    public String saveNewProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult) {
+    public String saveNewProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("manufacturers", manufacturerRepository.findAll());
+            model.addAttribute("types", typeRepository.findAll());
             return "addproduct";
         } else {
             productRepository.save(product);
@@ -57,8 +59,8 @@ public class ProductController {
 
     // Delete product
     @GetMapping("/delete-product/{id}")
-    public String deleteProduct(@PathVariable("id") Long productId, Model model) {
-        productRepository.deleteById(productId);
+    public String deleteProduct(@PathVariable("id") Long prodId, Model model) {
+        productRepository.deleteById(prodId);
         return "redirect:/productlist";
     }
 
@@ -73,8 +75,10 @@ public class ProductController {
 
     // Save edited product
     @PostMapping("/savemodified")
-    public String saveModified(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult) {
+    public String saveModified(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("manufacturers", manufacturerRepository.findAll());
+            model.addAttribute("types", typeRepository.findAll());
             return "editproduct";
         } else {
             productRepository.save(product);

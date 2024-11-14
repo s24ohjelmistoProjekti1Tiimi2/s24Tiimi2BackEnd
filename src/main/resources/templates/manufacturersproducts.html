@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manufacturer's products</title>
+</head>
+
+<body>
+  <nav>
+    <ul style="list-style-type: none;">
+      <li><a href="/productlist">Products</a></li>
+      <li><a href="/manufacturerlist">Manufacturers</a></li>
+      <li><a href="/searchproducts">Manufacturer's products</a></li>
+    </ul>
+  </nav>
+
+  <h2>Search products by manufacturer</h2>
+  <form th:action="@{/searchproducts}" method="post">
+    <label for="manufacturer">Select Manufacturer:</label>
+    <select name="manufacturerId">
+      <option value="" disabled selected>Select manufacturer</option>
+      <option th:each="manufacturer : ${manufacturers}" th:value="${manufacturer.id}" th:text="${manufacturer.name}">
+      </option>
+    </select>
+    <button type="submit">Seach products</button>
+  </form>
+
+  <div th:if="${products != null}">
+    <h2 th:text="${manufacturer.name} + ' products'"></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Color</th>
+          <th>Size</th>
+          <th>Price</th>
+          <th>Manufacturer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="product: ${products}">
+          <td th:text="${product.name}"></td>
+          <td th:text="${product.type.name}"></td>
+          <td th:text="${product.color}"></td>
+          <td th:text="${product.size}"></td>
+          <td th:text="${product.price}"></td>
+          <td th:text="${product.manufacturer.name}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+
+</html>

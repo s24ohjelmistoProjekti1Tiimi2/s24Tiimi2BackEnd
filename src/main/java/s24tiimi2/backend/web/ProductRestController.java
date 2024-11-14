@@ -19,18 +19,12 @@ public class ProductRestController {
 	@Autowired
 	private ProductRepository repository;
 
-	// RESTful service to get all products
-	@GetMapping("/rest/products")
-	public @ResponseBody List<Product> productListRest() {
-		return (List<Product>) repository.findAll();
-	}
 
 	// RESTful service to get all products
 	@GetMapping("/rest/products/type/{typename}")
 	public @ResponseBody List<Product> productsByTypeRest(@PathVariable String typename) {
 
-		String nameLower = typename.toLowerCase();
-		return (List<Product>) repository.findAllByType_Name(nameLower);
+		return (List<Product>) repository.findAllByType_Name(typename);
 	}
 
 }

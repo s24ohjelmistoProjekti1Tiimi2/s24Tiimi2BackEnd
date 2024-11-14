@@ -31,9 +31,9 @@ public class BackendApplication {
 			Manufacturer demo2 = new Manufacturer("Feel active");
 			manufRepo.save(demo2);
 
-			Type clothing = new Type("Clothing");
-			Type toy = new Type("Toy");
-			Type food = new Type("Food");
+			Type clothing = new Type("clothing");
+			Type toy = new Type("toy");
+			Type food = new Type("food");
 			typeRepo.save(clothing);
 			typeRepo.save(toy);
 			typeRepo.save(food);

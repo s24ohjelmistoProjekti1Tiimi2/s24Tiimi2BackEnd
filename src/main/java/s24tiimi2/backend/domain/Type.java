@@ -18,7 +18,7 @@ public class Type {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long typeId;
 
     @NotNull
     private String name;
@@ -35,11 +35,11 @@ public class Type {
     }
 
     public Long getId() {
-        return id;
+        return typeId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.typeId = id;
     }
 
     public String getName() {

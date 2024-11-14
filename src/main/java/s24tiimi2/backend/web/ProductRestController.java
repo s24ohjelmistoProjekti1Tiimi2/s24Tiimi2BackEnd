@@ -29,8 +29,7 @@ public class ProductRestController {
 	@GetMapping("/rest/products/type/{typename}")
 	public @ResponseBody List<Product> productsByTypeRest(@PathVariable String typename) {
 
-		String nameLower = typename.toLowerCase();
-		return (List<Product>) repository.findAllByType_Name(nameLower);
+		return (List<Product>) repository.findAllByType_Name(typename);
 	}
 
 }

@@ -19,11 +19,6 @@ public class ProductRestController {
 	@Autowired
 	private ProductRepository repository;
 
-	// RESTful service to get all products
-	@GetMapping("/rest/products")
-	public @ResponseBody List<Product> productListRest() {
-		return (List<Product>) repository.findAll();
-	}
 
 	// RESTful service to get all products
 	@GetMapping("/rest/products/type/{typename}")

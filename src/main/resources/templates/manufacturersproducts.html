@@ -12,12 +12,12 @@
     <ul style="list-style-type: none;">
       <li><a href="/productlist">Products</a></li>
       <li><a href="/manufacturerlist">Manufacturers</a></li>
-      <li><a href="/searchproducts">Manufacturer's products</a></li>
+      <li><a href="/productsbymanufacturer">Manufacturer's products</a></li>
     </ul>
   </nav>
 
   <h2>Search products by manufacturer</h2>
-  <form th:action="@{/searchproducts}" method="post">
+  <form th:action="@{/productsbymanufacturer}" method="post">
     <label for="manufacturer">Select Manufacturer:</label>
     <select name="manufacturerId">
       <option value="" disabled selected>Select manufacturer</option>

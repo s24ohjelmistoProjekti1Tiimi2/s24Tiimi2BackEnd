@@ -1,12 +1,9 @@
 package s24tiimi2.backend.web;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
-import s24tiimi2.backend.domain.Manufacturer;
 import s24tiimi2.backend.domain.ManufacturerRepository;
 import s24tiimi2.backend.domain.Product;
 import s24tiimi2.backend.domain.ProductRepository;
@@ -15,100 +12,61 @@ import s24tiimi2.backend.domain.TypeRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ProductController {
 
     @Autowired
-    private ProductRepository repository;
+    private ProductRepository productRepository;
     @Autowired
-    private ManufacturerRepository manufRepo;
+    private ManufacturerRepository manufacturterRepository;
     @Autowired
-    private TypeRepository typeRepo;
+    private TypeRepository typeRepository;
 
+    // Show product-list
     @GetMapping("/productlist")
     public String getAllProductsList(Model model) {
-        model.addAttribute("products", repository.findAll());
+        model.addAttribute("products", productRepository.findAll());
         return "productlist";
     }
 
+    // Add new product
     @GetMapping("/addproduct")
     public String addNewProduct(Model model) {
         model.addAttribute("product", new Product());
-        model.addAttribute("manufacturer", manufRepo.findAll());
-        model.addAttribute("type", typeRepo.findAll());
+        model.addAttribute("manufacturer", manufacturterRepository.findAll());
+        model.addAttribute("type", typeRepository.findAll());
         return "addproduct";
     }
 
+    // Save new product
     @PostMapping("/saveproduct")
     public String saveNewProduct(Product product) {
-        repository.save(product);
+        productRepository.save(product);
         return "redirect:/productlist";
     }
 
+    // Delete product
     @GetMapping("/delete-product/{id}")
     public String deleteProduct(@PathVariable("id") Long productId, Model model) {
-        repository.deleteById(productId);
+        productRepository.deleteById(productId);
         return "redirect:/productlist";
     }
 
-    // Manufacturer endpoints
-    @GetMapping("/manufacturerlist")
-    public String getAllManufacturersList(Model model) {
-        model.addAttribute("manufacturers", manufRepo.findAll());
-        return "manufacturerlist";
-    }
-
-    @GetMapping("/addmanufacturer")
-    public String addNewManufacturer(Model model) {
-        model.addAttribute("manufacturer", new Manufacturer());
-        return "addmanufacturer";
-    }
-
-    @PostMapping("/savemanufacturer")
-    public String saveNewManufacturer(Manufacturer manufacturer) {
-        manufRepo.save(manufacturer);
-        return "redirect:/manufacturerlist";
-    }
-
-    @GetMapping("/delete-manufacturer/{id}")
-    public String deleteManufacturer(@PathVariable("id") Long manufacturerId, Model model) {
-        repository.deleteById(manufacturerId);
-        return "redirect:/manufacturerlist";
-    }
-
-
-    @RequestMapping(value = "/edit/{id}")
+    // Edit product
+    @GetMapping("/edit/{id}")
     public String editProduct(@PathVariable("id") Long prodId, Model model) {
-        model.addAttribute("product", repository.findById(prodId));
-        model.addAttribute("manufacturers", manufRepo.findAll());
-        model.addAttribute("types", typeRepo.findAll());
+        model.addAttribute("product", productRepository.findById(prodId));
+        model.addAttribute("manufacturers", manufacturterRepository.findAll());
+        model.addAttribute("types", typeRepository.findAll());
         return "editproduct";
     }
 
+    // Save edited product
     @PostMapping(value = "/savemodified")
     public String saveModified(Product product) {
-        repository.save(product);
+        productRepository.save(product);
         return "redirect:/productlist";
-    }
-
-    //Products by a manufacturer endpoints
-    @GetMapping("/searchproducts")
-    public String showSearch(Model model) {
-        model.addAttribute("manufacturers", manufRepo.findAll());
-        return "manufacturersproducts";
-    }
- 
-    @PostMapping("/searchproducts")
-    public String searchProductsByManufacturer(@RequestParam("manufacturerId") Long manufacturerId, Model model) {
-        Manufacturer manufacturer = manufRepo.findById(manufacturerId).orElse(null);
-        List<Product> products = repository.findByManufacturer_Id(manufacturerId);
-        model.addAttribute("products", products);
-        model.addAttribute("manufacturer", manufacturer);
-        model.addAttribute("manufacturers", manufRepo.findAll());
-        return "manufacturersproducts";
     }
 
 }

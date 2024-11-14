@@ -19,7 +19,7 @@ public class Manufacturer {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@NotNull
+	@NotNull(message = "Valmistajalla täytyy olla nimi.")
 	private String name;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "manufacturer")

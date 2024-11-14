@@ -17,12 +17,12 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
+    @NotNull(message = "Tuotteella täytyy olla nimi.")
     private String name;
     
     private String color;
-    
-    @NotNull
+
+    @NotNull(message = "Tuotteella täytyy olla hinta.")
     private Double price;
 
     private String size;

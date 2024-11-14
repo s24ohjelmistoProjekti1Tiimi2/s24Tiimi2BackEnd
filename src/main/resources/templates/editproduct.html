@@ -16,6 +16,7 @@
 
 			<label for="name">Name</label>
 				<input type="text" id="productName" th:field="*{name}" />
+				<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</td>
 			<br>
 			<label for="typelist">Type</label>
 				<select id="typelist" th:field="*{type}" class="form-control" required >
@@ -35,6 +36,7 @@
 			<br>
 			<label for="price">Price</label>
 				<input type="text" id="price" th:field="*{price}" />
+				<td th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price error</td>
 			<br>
 			<label for="manufacturerlist">Manufacturer</label>
 				<select id="manufacturerlist" th:field="*{manufacturer}" class="form-control" required >

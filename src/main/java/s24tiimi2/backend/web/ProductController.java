@@ -3,6 +3,7 @@ package s24tiimi2.backend.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 
 import s24tiimi2.backend.domain.ManufacturerRepository;
 import s24tiimi2.backend.domain.Product;
@@ -10,7 +11,11 @@ import s24tiimi2.backend.domain.ProductRepository;
 import s24tiimi2.backend.domain.TypeRepository;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
@@ -19,7 +24,7 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
     @Autowired
-    private ManufacturerRepository manufacturterRepository;
+    private ManufacturerRepository manufacturerRepository;
     @Autowired
     private TypeRepository typeRepository;
 
@@ -34,16 +39,20 @@ public class ProductController {
     @GetMapping("/addproduct")
     public String addNewProduct(Model model) {
         model.addAttribute("product", new Product());
-        model.addAttribute("manufacturer", manufacturterRepository.findAll());
+        model.addAttribute("manufacturer", manufacturerRepository.findAll());
         model.addAttribute("type", typeRepository.findAll());
         return "addproduct";
     }
 
     // Save new product
     @PostMapping("/saveproduct")
-    public String saveNewProduct(Product product) {
-        productRepository.save(product);
-        return "redirect:/productlist";
+    public String saveNewProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "addproduct";
+        } else {
+            productRepository.save(product);
+            return "redirect:/productlist";
+        }
     }
 
     // Delete product
@@ -57,16 +66,20 @@ public class ProductController {
     @GetMapping("/edit/{id}")
     public String editProduct(@PathVariable("id") Long prodId, Model model) {
         model.addAttribute("product", productRepository.findById(prodId));
-        model.addAttribute("manufacturers", manufacturterRepository.findAll());
+        model.addAttribute("manufacturers", manufacturerRepository.findAll());
         model.addAttribute("types", typeRepository.findAll());
         return "editproduct";
     }
 
     // Save edited product
-    @PostMapping(value = "/savemodified")
-    public String saveModified(Product product) {
-        productRepository.save(product);
-        return "redirect:/productlist";
+    @PostMapping("/savemodified")
+    public String saveModified(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "editproduct";
+        } else {
+            productRepository.save(product);
+            return "redirect:/productlist";
+        }
     }
 
 }

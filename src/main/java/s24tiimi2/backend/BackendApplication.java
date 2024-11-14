@@ -40,6 +40,8 @@ public class BackendApplication {
 
 			Product demo1 = new Product("Padded collar", "black", 14.49, "S", demo2, clothing);
 			productRepo.save(demo1);
+			Product demo3 = new Product("Shirt", "red", 9.99, "L", demo2, clothing );
+			productRepo.save(demo3);
 
 			log.info("print demos");
 			for (Product product : productRepo.findAll()) {

@@ -10,7 +10,6 @@ import s24tiimi2.backend.domain.Manufacturer;
 import s24tiimi2.backend.domain.ManufacturerRepository;
 import s24tiimi2.backend.domain.Product;
 import s24tiimi2.backend.domain.ProductRepository;
-import s24tiimi2.backend.domain.Type;
 import s24tiimi2.backend.domain.TypeRepository;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class ProductController {
@@ -96,21 +94,21 @@ public class ProductController {
         return "redirect:/productlist";
     }
 
-     //Products by a manufacturer endpoints
-     @GetMapping("/searchproducts")
-     public String showSearch(Model model) {
-         model.addAttribute("manufacturers", manufRepo.findAll());
-         return "manufacturersproducts";
-     }
+    //Products by a manufacturer endpoints
+    @GetMapping("/searchproducts")
+    public String showSearch(Model model) {
+        model.addAttribute("manufacturers", manufRepo.findAll());
+        return "manufacturersproducts";
+    }
  
-     @PostMapping("/searchproducts")
-     public String searchProductsByManufacturer(@RequestParam("manufacturerId") Long manufacturerId, Model model) {
-         Manufacturer manufacturer = manufRepo.findById(manufacturerId).orElse(null);
-         List<Product> products = repository.findByManufacturer_Id(manufacturerId);
-         model.addAttribute("products", products);
-         model.addAttribute("manufacturer", manufacturer);
-         model.addAttribute("manufacturers", manufRepo.findAll());
-         return "manufacturersproducts";
-     }
+    @PostMapping("/searchproducts")
+    public String searchProductsByManufacturer(@RequestParam("manufacturerId") Long manufacturerId, Model model) {
+        Manufacturer manufacturer = manufRepo.findById(manufacturerId).orElse(null);
+        List<Product> products = repository.findByManufacturer_Id(manufacturerId);
+        model.addAttribute("products", products);
+        model.addAttribute("manufacturer", manufacturer);
+        model.addAttribute("manufacturers", manufRepo.findAll());
+        return "manufacturersproducts";
+    }
 
 }

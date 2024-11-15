@@ -12,16 +12,18 @@
     <div>
         <form th:object="${product}" th:action="@{/saveproduct}" action="#" method="post">
             <label for="name">Name</label>
-                <input type="text" id="name" th:field="*{name}" />
-                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</td>
+            <input type="text" id="name" th:field="*{name}" />
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</td>
             <br>
             <label for="typelist">Type</label>
-                <select id="typelist" th:field="*{type}" class="form-control" required >
-                    <option th:each="type: ${types}" th:value="${type.id}" th:text="${type.name}"></option>
-                </select>
+            <select id="typelist" th:field="*{type}" class="form-control">
+                <option value="">Select type</option>
+                <option th:each="type: ${types}" th:value="${type.id}" th:text="${type.name}"></option>
+            </select>
+            <td th:if="${#fields.hasErrors('type')}" th:errors="*{type}">Type error</td>
             <br>
             <label type="color">Color</label>
-                <input type="text" id="color" th:field="*{color}" />
+            <input type="text" id="color" th:field="*{color}" />
             <br>
             <label for="size">Size</label>
             <select id="size" th:field="*{size}" class="form-control">
@@ -32,14 +34,16 @@
             </select>
             <br>
             <label for="price">Price</label>
-                <input type="text" id="price" th:field="*{price}" />
-                <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price error</td>
+            <input type="text" id="price" th:field="*{price}" />
+            <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price error</td>
             <br>
             <label for="manufacturer">Manufacturer</label>
             <select id="manufacturer" th:field="*{manufacturer}" class="form-control">
+                <option value="">Select manufacturer</option>
                 <option th:each="manufacturer: ${manufacturers}" th:value="${manufacturer.id}"
                     th:text="${manufacturer.name}"></option>
             </select>
+            <td th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}">Manufacturer error</td>
             <br>
             <input type="submit" value="Add new product" />
             <form>

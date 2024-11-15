@@ -11,7 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 public class Type {
@@ -20,7 +20,7 @@ public class Type {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long typeId;
 
-    @NotNull
+    @NotEmpty
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "type")

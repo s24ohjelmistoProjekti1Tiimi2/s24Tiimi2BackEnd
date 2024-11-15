@@ -31,13 +31,13 @@ public class Product {
     @ManyToOne
     @JsonIgnoreProperties("products")
     @JoinColumn(name = "manufacturerId")
-    //@NotNull
+    @NotNull(message = "Tuotteella täytyy olla valmistaja")
     private Manufacturer manufacturer;
 
     @ManyToOne
     @JsonIgnoreProperties("products")
     @JoinColumn(name = "typeId")
-    //@NotNull
+    @NotNull(message = "Tuotteella täytyy olla tyyppi")
     private Type type;
 
     public Product(String name, String color, Double price, String size, Manufacturer manufacturer, Type type) {

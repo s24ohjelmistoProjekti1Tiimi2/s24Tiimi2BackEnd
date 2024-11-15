@@ -21,6 +21,7 @@
 			<label for="typelist">Type</label>
 				<select id="typelist" th:field="*{type}" class="form-control" required >
 					<option th:each="type: ${types}" th:value="${type.id}" th:text="${type.name}"></option>
+					<td th:if="${#fields.hasErrors('type')}" th:errors="*{type}">Type error</td>
 				</select>
 			<br>
 			<label for="color">Color</label>

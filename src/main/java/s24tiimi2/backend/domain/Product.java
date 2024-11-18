@@ -36,7 +36,7 @@ public class Product {
 
     @ManyToOne
     @JsonIgnoreProperties("products")
-    @JoinColumn(name = "typeId")
+    @JoinColumn(name = "type_id")
     @NotNull(message = "Tuotteella täytyy olla tyyppi")
     private Type type;
 

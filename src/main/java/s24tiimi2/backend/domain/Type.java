@@ -6,6 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,9 +19,10 @@ public class Type {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long typeId;
+    private Long id;
 
     @NotEmpty
+    @Column(name = "type_name")
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "type")
@@ -35,11 +37,11 @@ public class Type {
     }
 
     public Long getId() {
-        return typeId;
+        return id;
     }
 
     public void setId(Long id) {
-        this.typeId = id;
+        this.id = id;
     }
 
     public String getName() {

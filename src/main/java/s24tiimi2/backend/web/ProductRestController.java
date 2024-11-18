@@ -21,7 +21,7 @@ public class ProductRestController {
 
 
 	// RESTful service to get all products
-	@GetMapping("/rest/products/type/{typename}")
+	@GetMapping("/api/products/type/{typename}")
 	public @ResponseBody List<Product> productsByTypeRest(@PathVariable String typename) {
 
 		return (List<Product>) repository.findAllByType_Name(typename);

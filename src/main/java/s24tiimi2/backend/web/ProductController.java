@@ -29,7 +29,7 @@ public class ProductController {
     private TypeRepository typeRepository;
 
     // Show product-list
-    @GetMapping("/productlist")
+    @GetMapping({"/productlist", "/"})
     public String getAllProductsList(Model model) {
         model.addAttribute("products", productRepository.findAll());
         return "productlist";

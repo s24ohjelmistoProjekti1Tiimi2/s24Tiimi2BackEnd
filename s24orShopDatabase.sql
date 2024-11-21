@@ -31,3 +31,16 @@ CREATE TABLE IF NOT EXISTS product (
 INSERT INTO product (name, type_id, color, size, price, manufacturer_id) VALUES ('Sparkling Shoes', 1, 'Black', 'S', 5, 2), 
 ('Chewable joy', 1, 'Multicolor', 'XS', 10, 1), 
 ('Jacket', 1, 'Yellow', 'M', 5, 2);
+
+
+
+
+-- CREATE USER TABLE
+CREATE TABLE IF NOT EXISTS app_user (
+  id BIGSERIAL PRIMARY KEY,
+  username VARCHAR(50) NOT NULL
+  password VARCHAR(50) NOT NULL
+  role VARCHAR(50) NOT NULL
+);
+INSERT INTO app_user (username, password, role) 
+VALUES ('admin', '$2a$12$xSKSL4wxAVITacS3mKlbiuEarX9XqVEZ.yGWidYtvjE/.AjAapSYi', 'ADMIN');

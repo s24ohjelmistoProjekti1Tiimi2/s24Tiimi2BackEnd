@@ -65,7 +65,7 @@ public class ProductController {
     }
 
     // Edit product
-    @GetMapping("/edit/{id}")
+    @GetMapping("/edit-product/{id}")
     public String editProduct(@PathVariable("id") Long prodId, Model model) {
         model.addAttribute("product", productRepository.findById(prodId));
         model.addAttribute("manufacturers", manufacturerRepository.findAll());

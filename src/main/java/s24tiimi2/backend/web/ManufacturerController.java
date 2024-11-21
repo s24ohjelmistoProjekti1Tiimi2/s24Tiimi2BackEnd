@@ -63,13 +63,12 @@ public class ManufacturerController {
     // Edit manufacturer
     @GetMapping("/edit-manufacturer/{id}")
     public String editManufacturer(@PathVariable("id") Long manufacturerId, Model model) {
-        model.addAttribute("manufacturers", manufacturerRepository.findById(manufacturerId));
+        model.addAttribute("manufacturer", manufacturerRepository.findById(manufacturerId));
         return "editmanufacturer";
     }
 
-    @GetMapping("/saveedit/{id}")
-    public String saveEditedManufacturer(@Valid @ModelAttribute("manufacturer") Manufacturer manufacturer,
-            BindingResult bindingResult) {
+    @PostMapping("/saveedit")
+    public String saveEditedManufacturer(@Valid @ModelAttribute("manufacturer") Manufacturer manufacturer, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "editmanufacturer";
         } else {

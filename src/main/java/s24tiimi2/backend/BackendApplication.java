@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import s24tiimi2.backend.domain.AppUser;
+import s24tiimi2.backend.domain.AppUserRepository;
 import s24tiimi2.backend.domain.Manufacturer;
 import s24tiimi2.backend.domain.ManufacturerRepository;
 import s24tiimi2.backend.domain.Product;
@@ -24,9 +26,12 @@ public class BackendApplication {
 	private static final Logger log = LoggerFactory.getLogger(BackendApplication.class);
 
 	@Bean
-	public CommandLineRunner products(ProductRepository productRepo, ManufacturerRepository manufRepo, TypeRepository typeRepo) {
+	public CommandLineRunner products(AppUserRepository userRepository, ProductRepository productRepo, ManufacturerRepository manufRepo, TypeRepository typeRepo) {
 
 		return (arg) -> {
+
+			AppUser user = new AppUser("admin", "$2a$12$xSKSL4wxAVITacS3mKlbiuEarX9XqVEZ.yGWidYtvjE/.AjAapSYi", "ADMIN");
+			userRepository.save(user);
 
 			// Manufacturer manufacturer1 = new Manufacturer("Feel active");
 			// Manufacturer manufacturer2 = new Manufacturer("Little&Bigger");

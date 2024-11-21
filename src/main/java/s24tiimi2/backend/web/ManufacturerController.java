@@ -43,7 +43,8 @@ public class ManufacturerController {
 
     // Save new manufacturer
     @PostMapping("/savemanufacturer")
-    public String saveNewManufacturer(@Valid @ModelAttribute("manufacturer") Manufacturer manufacturer, BindingResult bindingResult) {
+    public String saveNewManufacturer(@Valid @ModelAttribute("manufacturer") Manufacturer manufacturer,
+            BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "addmanufacturer";
         } else {
@@ -59,7 +60,25 @@ public class ManufacturerController {
         return "redirect:/manufacturerlist";
     }
 
-    //Products by a manufacturer endpoints
+    // Edit manufacturer
+    @GetMapping("/edit-manufacturer/{id}")
+    public String editManufacturer(@PathVariable("id") Long manufacturerId, Model model) {
+        model.addAttribute("manufacturers", manufacturerRepository.findById(manufacturerId));
+        return "editmanufacturer";
+    }
+
+    @GetMapping("/saveedit/{id}")
+    public String saveEditedManufacturer(@Valid @ModelAttribute("manufacturer") Manufacturer manufacturer,
+            BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "editmanufacturer";
+        } else {
+            manufacturerRepository.save(manufacturer);
+            return "redirect:/manufacturerlist";
+        }
+    }
+
+    // Products by a manufacturer endpoints
 
     // Find all manufacturers
     @GetMapping("/productsbymanufacturer")

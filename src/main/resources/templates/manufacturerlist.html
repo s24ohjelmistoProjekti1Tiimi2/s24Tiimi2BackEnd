@@ -27,6 +27,9 @@
         <a th:href="@{/delete-manufacturer/{id}(id=${manufacturer.id})}"><button type="button"
             class="btn btn-primary">Delete</button></a>
       </td>
+      <td>
+        <a th:href="@{/edit-manufacturer/{id}(id=${manufacturer.id})}"><button type="button" class="btn btn-primary">Edit</button></a>
+      </td>
     </tr>
   </table>
   <a href="/addmanufacturer"><button type="button" class="btn btn-primary">Add new manufacturer</button></a>

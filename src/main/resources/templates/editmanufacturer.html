@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Manufacturer</title>
+</head>
+
+<body>
+    <h1>Edit Manufacturer</h1>
+    <div>
+        <form th:object="${manufacturer}" th:action="@{/saveedit}" action="#" method="post">
+            <!-- <input type="hidden" th:field="*{id}" /> -->
+
+            <label for="name">Name</label>
+            <input type="text" id="manufacturerName" th:field="*{name}" />
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</td>
+            <br>
+            <input type="submit" class="btn btn-success" value="Save"></input>
+        </form>
+        <a href="/productlist">Back to homepage</a>
+    </div>
+</body>
+
+</html>

@@ -15,7 +15,7 @@ import jakarta.validation.constraints.NotEmpty;
 public class Manufacturer {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotEmpty(message = "Valmistajalla täytyy olla nimi.")

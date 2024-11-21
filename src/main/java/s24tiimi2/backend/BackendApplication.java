@@ -30,8 +30,8 @@ public class BackendApplication {
 
 		return (arg) -> {
 
-			AppUser user = new AppUser("admin", "$2a$12$xSKSL4wxAVITacS3mKlbiuEarX9XqVEZ.yGWidYtvjE/.AjAapSYi", "ADMIN");
-			userRepository.save(user);
+			// AppUser user = new AppUser("admin", "$2a$12$xSKSL4wxAVITacS3mKlbiuEarX9XqVEZ.yGWidYtvjE/.AjAapSYi", "ADMIN");
+			// userRepository.save(user);
 
 			// Manufacturer manufacturer1 = new Manufacturer("Feel active");
 			// Manufacturer manufacturer2 = new Manufacturer("Little&Bigger");

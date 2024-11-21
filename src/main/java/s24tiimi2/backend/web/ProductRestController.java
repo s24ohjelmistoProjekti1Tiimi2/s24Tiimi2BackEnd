@@ -12,7 +12,6 @@ import s24tiimi2.backend.domain.Manufacturer;
 import s24tiimi2.backend.domain.ManufacturerRepository;
 import s24tiimi2.backend.domain.Product;
 import s24tiimi2.backend.domain.ProductRepository;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 

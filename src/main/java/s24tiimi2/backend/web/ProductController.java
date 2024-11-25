@@ -18,6 +18,7 @@ import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PathVariable;
 
+
 @Controller
 public class ProductController {
 
@@ -28,8 +29,14 @@ public class ProductController {
     @Autowired
     private TypeRepository typeRepository;
 
+    @GetMapping({"/home", "/"}) 
+    public String getHomePage() {
+        return "index";
+    }
+    
+
     // Show product-list
-    @GetMapping({"/productlist", "/"})
+    @GetMapping("/productlist")
     public String getAllProductsList(Model model) {
         model.addAttribute("products", productRepository.findAll());
         return "productlist";

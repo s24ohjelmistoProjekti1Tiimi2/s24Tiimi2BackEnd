@@ -16,7 +16,7 @@ import s24tiimi2.backend.domain.ProductRepository;
 
 
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {"http://localhost:5173", "https://s24ohjelmistoprojekti1tiimi2.github.io"})
 @RestController
 public class ProductRestController {
 

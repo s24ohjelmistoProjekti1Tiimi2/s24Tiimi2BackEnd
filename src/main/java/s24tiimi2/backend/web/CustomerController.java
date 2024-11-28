@@ -16,6 +16,6 @@ public class CustomerController {
     @GetMapping("/customerlist")
     public String getCustomerList(Model model) {
         model.addAttribute("customers", customerRepository.findAll());
-        return "customers";
+        return "customerlist";
     }
 }

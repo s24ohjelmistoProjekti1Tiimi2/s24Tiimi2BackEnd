@@ -28,6 +28,9 @@ public class Product {
 
     private String size;
 
+    @NotNull(message = "Tuotteella oltava varastomäärä")
+    private Integer stock;
+
     @ManyToOne
     @JsonIgnoreProperties("products")
     @JoinColumn(name = "manufacturerId")
@@ -40,12 +43,13 @@ public class Product {
     @NotNull(message = "Tuotteella täytyy olla tyyppi")
     private Type type;
 
-    public Product(String name, String color, Double price, String size, Manufacturer manufacturer, Type type) {
+    public Product(String name, String color, Double price, String size, Integer stock, Manufacturer manufacturer, Type type) {
         super();
         this.name = name;
         this.color = color;
         this.price = price;
         this.size = size;
+        this.stock = stock;
         this.manufacturer = manufacturer;
         this.type = type;
     }
@@ -53,46 +57,55 @@ public class Product {
     public Product() {
     }
 
+    
     public Long getId() {
         return id;
     }
-
+    
     public void setId(Long id) {
         this.id = id;
     }
-
+    
     public String getName() {
         return name;
     }
-
+    
     public void setName(String name) {
         this.name = name;
     }
-
+    
     public String getColor() {
         return color;
     }
-
+    
     public void setColor(String color) {
         this.color = color;
     }
-
+    
     public Double getPrice() {
         return price;
     }
-
+    
     public void setPrice(Double price) {
         this.price = price;
     }
-
+    
     public String getSize() {
         return size;
     }
-
+    
     public void setSize(String size) {
         this.size = size;
     }
+    
+    public Integer getStock() {
+        return stock;
+    }
 
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+    
     public Manufacturer getManufacturer() {
         return manufacturer;
     }
@@ -112,7 +125,7 @@ public class Product {
     @Override
     public String toString() {
         return "Product [id=" + id + ", name=" + name + ", color=" + color + ", price=" + price + ", size=" + size
-                + ", manufacturer=" + manufacturer + ", type=" + type + "]";
+                + ", manufacturer=" + manufacturer + ", type=" + type + ", stock=" + stock + "]";
     }
 
 }

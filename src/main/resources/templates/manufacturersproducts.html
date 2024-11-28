@@ -40,6 +40,7 @@
           <th>Size</th>
           <th>Price</th>
           <th>Manufacturer</th>
+          <th>Stock</th>
         </tr>
       </thead>
       <tbody>
@@ -50,6 +51,7 @@
           <td th:text="${product.size}"></td>
           <td th:text="${product.price}"></td>
           <td th:text="${product.manufacturer.name}"></td>
+          <td th:text="${product.stock}"></td>
         </tr>
       </tbody>
     </table>

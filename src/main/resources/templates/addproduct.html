@@ -45,6 +45,9 @@
             </select>
             <td th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}">Manufacturer error</td>
             <br>
+            <label for="stock">Stock</label>
+            <input type="number" step="10" id="stock" th:field="*{stock}" />
+            <br>
             <input type="submit" value="Add new product" />
             <form>
                 <br>

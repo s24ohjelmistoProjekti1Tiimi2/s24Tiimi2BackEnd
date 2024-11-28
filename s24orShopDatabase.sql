@@ -44,3 +44,20 @@ CREATE TABLE IF NOT EXISTS app_user (
 );
 INSERT INTO app_user (username, password, role) 
 VALUES ('admin', '$2a$12$xSKSL4wxAVITacS3mKlbiuEarX9XqVEZ.yGWidYtvjE/.AjAapSYi', 'ADMIN');
+
+
+ALTER TABLE IF EXISTS public.product
+ADD COLUMN stock integer;
+
+
+
+CREATE TABLE IF NOT EXISTS customer (
+id BIGSERIAL PRIMARY KEY,
+firstname VARCHAR(50), 
+lastname VARCHAR(50),
+email VARCHAR(50) NOT NULL
+);
+
+
+UPDATE table_name
+SET Attribute = 0;

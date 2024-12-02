@@ -24,6 +24,7 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/**").permitAll()
+                        .requestMatchers("/error", "/error/**").permitAll()
                         .anyRequest().hasAuthority("ADMIN"))
                 .formLogin(formlogin -> formlogin
                         .defaultSuccessUrl("/", true)

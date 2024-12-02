@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add customer</title>
+    <title>Edit customer</title>
 </head>
 
 <body>
-    <h1>Add new customer</h1>
+    <h1>Edit customer</h1>
     <div>
-        <form th:object="${customer}" th:action="@{/savecustomer}" action="#" method="post">
+        <form th:object="${customer}" th:action="@{/saveupdate}" action="#" method="post">
+            <input type="hidden" th:field="*{id}">
+
             <label for="firstname">First name: </label>
             <input type="text" id="firstname" th:field="*{firstname}" />
             <br>
@@ -26,8 +28,8 @@
     </div>
     <br>
     <button type="button" onclick="location.href='/customerlist'">Cancel</button>
-    <br>
-    <a href="/home">Back to homepage</a>
+    <b>
+        <a href="/home">Back to homepage</a>
 </body>
 
 </html>

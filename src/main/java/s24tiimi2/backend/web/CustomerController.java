@@ -1,6 +1,7 @@
 package s24tiimi2.backend.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -8,7 +9,7 @@ import s24tiimi2.backend.domain.CustomerRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class CustomerController {
+public class CustomerController implements ErrorController{
 
     @Autowired
     private CustomerRepository customerRepository;
@@ -18,5 +19,6 @@ public class CustomerController {
         model.addAttribute("customers", customerRepository.findAll());
         return "customerlist";
     }
+
 
 }

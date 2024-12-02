@@ -18,7 +18,6 @@ import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PathVariable;
 
-
 @Controller
 public class ProductController {
 
@@ -29,11 +28,10 @@ public class ProductController {
     @Autowired
     private TypeRepository typeRepository;
 
-    @GetMapping({"/home", "/"}) 
+    @GetMapping({ "/home", "/" })
     public String getHomePage() {
         return "index";
     }
-    
 
     // Show product-list
     @GetMapping("/productlist")
@@ -53,7 +51,8 @@ public class ProductController {
 
     // Save new product
     @PostMapping("/saveproduct")
-    public String saveNewProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model) {
+    public String saveNewProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult,
+            Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("manufacturers", manufacturerRepository.findAll());
             model.addAttribute("types", typeRepository.findAll());
@@ -80,17 +79,17 @@ public class ProductController {
         return "editproduct";
     }
 
-        // Edit stock on product
-        @GetMapping("/edit-stock/{id}")
-        public String editStock(@PathVariable("id") Long prodId, Model model) {
-            model.addAttribute("product", productRepository.findById(prodId));
-            return "editstock";
-        }
-
+    // Edit stock on product
+    @GetMapping("/edit-stock/{id}")
+    public String editStock(@PathVariable("id") Long prodId, Model model) {
+        model.addAttribute("product", productRepository.findById(prodId));
+        return "editstock";
+    }
 
     // Save edited product
     @PostMapping("/savemodified")
-    public String saveModified(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model) {
+    public String saveModified(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult,
+            Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("manufacturers", manufacturerRepository.findAll());
             model.addAttribute("types", typeRepository.findAll());
@@ -101,16 +100,26 @@ public class ProductController {
         }
     }
 
-        // Save edited stock on product
-        @PostMapping("/savestock")
-        public String saveStock(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult) {
-            if (bindingResult.hasErrors()) {
-                System.out.println(bindingResult);
-                return "editstock";
-            } else {
-                productRepository.save(product);
-                return "redirect:/productlist";
-            }
-        }
+    // Save edited stock on product
+    @PostMapping("/savestock")
+    public String saveStock(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult,
+            Model model) {
+       // tää toimii
+        Product newStock = productRepository.findById(product.getId()).orElseThrow();
+        newStock.setStock(product.getStock());
+        productRepository.save(newStock);
+        return "redirect:/productlist";
 
+        // mut virhetarkistuksen kaa ei
+        // Product newStock = productRepository.findById(product.getId()).orElseThrow();
+        // if (bindingResult.hasErrors()) {
+        //     model.addAttribute("product", product);
+        //     System.out.println(bindingResult);
+        //     return "editstock";
+        // } else {
+        //     newStock.setStock(product.getStock());
+        //     productRepository.save(newStock);
+        //     return "redirect:/productlist";
+        // }
+    }
 }

@@ -44,10 +44,10 @@ public class CustomerController {
         }
     }
 
-    @GetMapping("/delete-customer/{id}")
+    @PostMapping("/delete-customer/{id}")
     public String deleteCustomer(@PathVariable("id") Long customerId, Model model) {
         customerRepository.deleteById(customerId);
-        return "redirect:/customerlist";
+        return "redirect:customerlist";
     }
 
     @GetMapping("/edit-customer/{id}")

@@ -1,6 +1,5 @@
 package s24tiimi2.backend.web;
 
-import org.hibernate.engine.jdbc.mutation.spi.Binding;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;

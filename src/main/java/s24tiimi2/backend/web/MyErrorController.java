@@ -28,7 +28,7 @@ public class MyErrorController implements ErrorController {
     }
     }
 
-    return "error/error";
+    return "/error";
     }
 
     // private static final String PATH = "/error";

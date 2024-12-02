@@ -44,6 +44,9 @@
       <td>
         <a th:href="@{/edit-product/{id}(id=${product.id})}"><button type="button" class="btn btn-primary">Edit</button></a>
       </td>
+      <td>
+        <a th:href="@{/edit-stock/{id}(id=${product.id})}"><button type="button" class="btn btn-primary">Edit Stock</button></a>
+      </td>
     </tr>
   </table>
   <a href="/addproduct"><button type="button" class="btn btn-primary">Add new product</button></a>

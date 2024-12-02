@@ -80,6 +80,14 @@ public class ProductController {
         return "editproduct";
     }
 
+        // Edit stock on product
+        @GetMapping("/edit-stock/{id}")
+        public String editStock(@PathVariable("id") Long prodId, Model model) {
+            model.addAttribute("product", productRepository.findById(prodId));
+            return "editstock";
+        }
+
+
     // Save edited product
     @PostMapping("/savemodified")
     public String saveModified(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model) {
@@ -92,5 +100,17 @@ public class ProductController {
             return "redirect:/productlist";
         }
     }
+
+        // Save edited stock on product
+        @PostMapping("/savestock")
+        public String saveStock(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult) {
+            if (bindingResult.hasErrors()) {
+                System.out.println(bindingResult);
+                return "editstock";
+            } else {
+                productRepository.save(product);
+                return "redirect:/productlist";
+            }
+        }
 
 }

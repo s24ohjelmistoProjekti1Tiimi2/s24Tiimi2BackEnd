@@ -4,21 +4,25 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" /> 
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
     <title>Product List</title>
 </head>
 
 <body>
-    <h1>Omppu and Rane's shop home page</h1>
-    <nav>
-        <ul style="list-style-type: none;">
-            <li><a href="/home" class="btn btn-primary">Home</a></li>
-            <li><a href="/productlist" class="btn btn-primary">Products</a></li>
-            <li><a href="/manufacturerlist" class="btn btn-primary">Manufacturers</a></li>
-            <li><a href="/productsbymanufacturer" class="btn btn-primary">Manufacturer's products</a></li>
-            <li><a href="/customerlist" class="btn btn-primary">Customers</a></li>
-        </ul>
-    </nav>
+    <div th:replace="~{fragments :: headerfragment}"></div>
+
+    <div class="container">
+        
+        <div class="row">
+            <div class="col">
+                <h1>Omppu and Rane's shop home page</h1>
+            </div>
+        </div>
+
+
+    </div>
+
+
 
 </body>
 

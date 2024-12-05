@@ -15,9 +15,7 @@ import s24tiimi2.backend.domain.Manufacturer;
 import s24tiimi2.backend.domain.ManufacturerRepository;
 import s24tiimi2.backend.domain.Product;
 import s24tiimi2.backend.domain.ProductRepository;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 //@CrossOrigin(origins = {"http://localhost:5173", "https://s24ohjelmistoprojekti1tiimi2.github.io"})

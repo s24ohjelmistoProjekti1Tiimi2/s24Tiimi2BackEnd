@@ -9,13 +9,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
-import s24tiimi2.backend.domain.AppUser;
 import s24tiimi2.backend.domain.AppUserRepository;
 import s24tiimi2.backend.domain.Manufacturer;
 import s24tiimi2.backend.domain.ManufacturerRepository;
 import s24tiimi2.backend.domain.Product;
 import s24tiimi2.backend.domain.ProductRepository;
-import s24tiimi2.backend.domain.Type;
+
 import s24tiimi2.backend.domain.TypeRepository;
 
 // @EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})

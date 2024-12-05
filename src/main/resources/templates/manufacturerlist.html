@@ -12,6 +12,9 @@
   <div th:replace="~{fragments :: headerfragment}"></div>
   
   <h1>Manufacturers</h1>
+  <div th:if="${error}" style="color:red;">
+    <p th:text="${error}"></p>
+</div>
   <table>
     <tr>
       <th>Name</th>

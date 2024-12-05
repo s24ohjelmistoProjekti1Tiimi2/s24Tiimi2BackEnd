@@ -1,7 +1,8 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+
 
 <head>
 	<title>Thymeleaf Fragments</title>
@@ -10,7 +11,7 @@
 <body>
 
 	<header th:fragment="headerfragment">
-		<div class="container">
+		<div class="container" sec:authorize="hasAuthority('ADMIN')">
 			<div class="row">
 				<div class="col">
 					<a th:href="@{/home}" class="col btn btn-primary">Home</a>
@@ -27,8 +28,18 @@
 				<div class="col">
 					<a th:href="@{/customerlist}" class="col btn btn-primary">Customers</a>
 				</div>
-				
-				
+
+
+				<br />
+				<br />
+			</div>
+		</div>
+
+		<div class="container" sec:authorize="!isAuthenticated()">
+			<div class="row">
+				<div class="col">
+					<a th:href="@{/login}" class="col btn btn-primary">Login as Admin</a>
+				</div>
 			</div>
 			<br/>
 			<br/>

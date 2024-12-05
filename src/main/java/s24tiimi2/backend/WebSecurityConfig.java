@@ -42,7 +42,10 @@ public class WebSecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("https://s24ohjelmistoProjekti1Tiimi2.github.io/s24Tiimi2FrontEnd/*"));
+        configuration.setAllowedOrigins(List.of(
+            "https://s24ohjelmistoProjekti1Tiimi2.github.io",
+            "http://localhost:5173"
+            ));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         configuration.setAllowCredentials(true);

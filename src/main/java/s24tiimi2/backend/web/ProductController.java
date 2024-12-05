@@ -18,7 +18,6 @@ import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PathVariable;
 
-
 @Controller
 public class ProductController {
 
@@ -29,11 +28,10 @@ public class ProductController {
     @Autowired
     private TypeRepository typeRepository;
 
-    @GetMapping({"/home", "/"}) 
+    @GetMapping({ "/home", "/" })
     public String getHomePage() {
         return "index";
     }
-    
 
     // Show product-list
     @GetMapping("/productlist")
@@ -53,7 +51,8 @@ public class ProductController {
 
     // Save new product
     @PostMapping("/saveproduct")
-    public String saveNewProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model) {
+    public String saveNewProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult,
+            Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("manufacturers", manufacturerRepository.findAll());
             model.addAttribute("types", typeRepository.findAll());
@@ -80,9 +79,17 @@ public class ProductController {
         return "editproduct";
     }
 
+    // Edit stock on product
+    @GetMapping("/edit-stock/{id}")
+    public String editStock(@PathVariable("id") Long prodId, Model model) {
+        model.addAttribute("product", productRepository.findById(prodId));
+        return "editstock";
+    }
+
     // Save edited product
     @PostMapping("/savemodified")
-    public String saveModified(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model) {
+    public String saveModified(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult,
+            Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("manufacturers", manufacturerRepository.findAll());
             model.addAttribute("types", typeRepository.findAll());
@@ -93,4 +100,15 @@ public class ProductController {
         }
     }
 
+    // Save edited stock on product
+    @PostMapping("/savestock")
+    public String saveStock(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult,
+            Model model) {
+        Product newStock = productRepository.findById(product.getId()).orElseThrow();
+        // päivittää vain stock määrän
+        newStock.setStock(product.getStock());
+        // päivittää kokonaan uuden määrän kanssa
+        productRepository.save(newStock);
+        return "redirect:/productlist";     
+    }
 }

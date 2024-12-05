@@ -3,18 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
     <title>Customer List</title>
 </head>
 <body>
-    <nav>
-        <ul style="list-style-type: none;">
-        <li><a href="/home">Home</a></li>
-        <li><a href="/productlist">Products</a></li>
-        <li><a href="/manufacturerlist">Manufacturers</a></li>
-        <li><a href="/productsbymanufacturer">Manufacturer's products</a></li>
-        <li><a href="/customerlist">Customers</a></li>
-        </ul>
-    </nav>
+  <div th:replace="~{fragments :: headerfragment}"></div>
 
   <h1>Customers</h1>
   <table>
@@ -24,13 +17,15 @@
         <th>Last Name</th>
     </tr>
     <tr th:each="customer : ${customers}">
-      <td th:text="${customer.email}"></td>
-      <td th:text="${customer.firstname}"></td>
-      <td th:text="${customer.lastname}"></td>
+    <td th:text="${customer.email}"></td>
+    <td th:text="${customer.firstname}"></td>
+    <td th:text="${customer.lastname}"></td>
       <td>
         <a th:href="@{/edit-customer/{id}(id=${customer.id})}"><button type="button" class="btn btn-primary">Edit</button></a>
+        <a th:href="@{/delete-customer/{id}(id=${customer.id})}"><button type="button" class="btn btn-primary">Delete</button></a>
       </td>
     </tr>
   </table>
+  <a href="/addcustomer">Add new customer</a>
 </body>
 </html>

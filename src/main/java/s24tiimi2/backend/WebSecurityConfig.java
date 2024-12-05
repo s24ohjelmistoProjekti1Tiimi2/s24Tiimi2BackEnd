@@ -14,6 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
 @Configuration
 @EnableMethodSecurity(securedEnabled = true)
@@ -28,7 +29,9 @@ public class WebSecurityConfig {
         .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/**").permitAll()
+                        .requestMatchers("/home","/").permitAll()
                         .requestMatchers("/error", "/error/**").permitAll()
+                        .requestMatchers(antMatcher("/css/**")).permitAll()
                         .anyRequest().hasAuthority("ADMIN"))
                 .formLogin(formlogin -> formlogin
                         .defaultSuccessUrl("/", true)
@@ -41,7 +44,7 @@ public class WebSecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("https://s24ohjelmistoProjekti1Tiimi2.github.io/s24Tiimi2FrontEnd/"));
+        configuration.setAllowedOrigins(List.of("https://s24ohjelmistoProjekti1Tiimi2.github.io/s24Tiimi2FrontEnd/*"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         configuration.setAllowCredentials(true);

@@ -10,4 +10,6 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 	List<Product> findAllByType_Name(@Param("name") String name);
 
 	List<Product> findByManufacturer_Id(Long manufacturerId);
+
+	boolean existsByManufacturerId(Long manufacturerId);
 }

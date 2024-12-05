@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 
@@ -30,10 +29,21 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 					<a th:href="@{/customerlist}" class="col btn btn-primary">Customers</a>
 				</div>
 
-				
+
 				<br />
 				<br />
 			</div>
+		</div>
+
+		<div class="container" sec:authorize="!isAuthenticated()">
+			<div class="row">
+				<div class="col">
+					<a th:href="@{/login}" class="col btn btn-primary">Login as Admin</a>
+				</div>
+			</div>
+			<br/>
+			<br/>
+		</div>
 	</header>
 
 </body>

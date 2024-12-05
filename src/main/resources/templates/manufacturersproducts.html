@@ -11,6 +11,7 @@
 <body>
   <div th:replace="~{fragments :: headerfragment}"></div>
 
+  <div class="container">
   <h2>Search products by manufacturer</h2>
   <form th:action="@{/productsbymanufacturer}" method="post">
     <label for="manufacturer">Select Manufacturer:</label>
@@ -50,6 +51,8 @@
     </table>
   </div>
   <a href="/home">Back to homepage</a>
+</div>
+
 </body>
 
 </html>

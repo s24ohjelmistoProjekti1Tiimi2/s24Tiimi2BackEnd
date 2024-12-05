@@ -10,29 +10,32 @@
 
 <body>
   <div th:replace="~{fragments :: headerfragment}"></div>
-  
-  <h1>Manufacturers</h1>
+  <div class="container">
+  <h1 class="h1">Manufacturers</h1>
+  <a href="/addmanufacturer" class="btn btn-primary btn-smaller" style="margin-top: 10px; margin-bottom: 10px;">Add new manufacturer</a>
   <div th:if="${error}" style="color:red;">
     <p th:text="${error}"></p>
 </div>
-  <table>
+  <table class="table table-striped">
     <tr>
       <th>Name</th>
+      <th></th>
+      <th></th>
     </tr>
     <tr th:each="manufacturer : ${manufacturers}">
       <td th:text="${manufacturer.name}"></td>
       <td>
         <a th:href="@{/delete-manufacturer/{id}(id=${manufacturer.id})}"><button type="button"
-            class="btn btn-primary">Delete</button></a>
+            class="btn btn-danger btn-smaller">Delete</button></a>
       </td>
       <td>
-        <a th:href="@{/edit-manufacturer/{id}(id=${manufacturer.id})}"><button type="button" class="btn btn-primary">Edit</button></a>
+        <a th:href="@{/edit-manufacturer/{id}(id=${manufacturer.id})}"><button type="button" class="btn btn-primary btn-smaller">Edit</button></a>
       </td>
     </tr>
   </table>
-  <a href="/addmanufacturer"><button type="button" class="btn btn-primary">Add new manufacturer</button></a>
-  <br>
-  <a href="/home">Back to homepage</a>
+
+  <a href="/home" class="btn btn-dark btn-smaller" style="margin-top: 10px; margin-bottom: 10px;">Back to homepage</a>
+</div>
 </body>
 
 </html>

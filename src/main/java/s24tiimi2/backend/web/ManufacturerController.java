@@ -56,6 +56,12 @@ public class ManufacturerController {
     // Delete manufacturer
     @GetMapping("/delete-manufacturer/{id}")
     public String deleteManufacturer(@PathVariable("id") Long manufacturerId, Model model) {
+
+        model.addAttribute("manufacturers", manufacturerRepository.findAll());
+        if (productRepository.existsByManufacturerId(manufacturerId)) {
+            model.addAttribute("error", "The manufacturer has products! Select one without products.");
+            return "manufacturerlist"; 
+        }
         manufacturerRepository.deleteById(manufacturerId);
         return "redirect:/manufacturerlist";
     }

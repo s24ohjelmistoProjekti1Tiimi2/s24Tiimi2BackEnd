@@ -37,7 +37,8 @@ public class WebSecurityConfig {
                         .defaultSuccessUrl("/", true)
                         .permitAll())
                 .logout(logout -> logout
-                        .permitAll());
+                        .permitAll())
+                        .csrf(csrf -> csrf.disable());
         return http.build();
     }
 

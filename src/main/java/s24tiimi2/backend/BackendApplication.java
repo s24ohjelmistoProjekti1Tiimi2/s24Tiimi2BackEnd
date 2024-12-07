@@ -4,9 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
 import s24tiimi2.backend.domain.AppUserRepository;
@@ -17,7 +15,6 @@ import s24tiimi2.backend.domain.ProductRepository;
 
 import s24tiimi2.backend.domain.TypeRepository;
 
-@EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
 @SpringBootApplication
 public class BackendApplication {
 

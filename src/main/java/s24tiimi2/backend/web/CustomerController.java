@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import jakarta.validation.Valid;
 
 @Controller
-public class CustomerController implements ErrorController{
+public class CustomerController implements ErrorController {
 
     @Autowired
     private CustomerRepository customerRepository;
@@ -34,11 +34,11 @@ public class CustomerController implements ErrorController{
     }
 
     @PostMapping("/savecustomer")
-    public String saveCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult, Model model) {
-        if(bindingResult.hasErrors()) {
+    public String saveCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult,
+            Model model) {
+        if (bindingResult.hasErrors()) {
             return "addcustomer";
-        }
-        else {
+        } else {
             customerRepository.save(customer);
             return "redirect:customerlist";
         }
@@ -57,7 +57,8 @@ public class CustomerController implements ErrorController{
     }
 
     @PostMapping("/saveupdate")
-    public String saveEditedCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult, Model model) {
+    public String saveEditedCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult,
+            Model model) {
         if (bindingResult.hasErrors()) {
             return "editcustomer";
         } else {

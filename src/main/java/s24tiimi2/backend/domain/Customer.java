@@ -10,7 +10,7 @@ import jakarta.validation.constraints.NotEmpty;
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String firstname;
@@ -59,5 +59,5 @@ public class Customer {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
 }

@@ -26,11 +26,13 @@ public class BackendApplication {
 	private static final Logger log = LoggerFactory.getLogger(BackendApplication.class);
 
 	@Bean
-	public CommandLineRunner products(AppUserRepository userRepository, ProductRepository productRepo, ManufacturerRepository manufRepo, TypeRepository typeRepo) {
+	public CommandLineRunner products(AppUserRepository userRepository, ProductRepository productRepo,
+			ManufacturerRepository manufRepo, TypeRepository typeRepo) {
 
 		return (arg) -> {
 
-			// AppUser user = new AppUser("admin", "$2a$12$xSKSL4wxAVITacS3mKlbiuEarX9XqVEZ.yGWidYtvjE/.AjAapSYi", "ADMIN");
+			// AppUser user = new AppUser("admin",
+			// "$2a$12$xSKSL4wxAVITacS3mKlbiuEarX9XqVEZ.yGWidYtvjE/.AjAapSYi", "ADMIN");
 			// userRepository.save(user);
 
 			// Manufacturer manufacturer1 = new Manufacturer("Feel active");
@@ -47,10 +49,14 @@ public class BackendApplication {
 			// typeRepo.save(type2);
 			// typeRepo.save(type3);
 
-			// Product product1 = new Product("Padded collar", "black", 14.49, "S", manufacturer1, type1);
-			// Product product2 = new Product("Shirt", "red", 9.99, "L", manufacturer1, type1 );
-			// Product product3 = new Product("Shaggy aktivointimatto", "blue", 24.99, null, manufacturer2, type2);
-			// Product product4 = new Product("Health Skin+ ankka, riista & peura", null, 2.59, null, manufacturer3, type3);
+			// Product product1 = new Product("Padded collar", "black", 14.49, "S",
+			// manufacturer1, type1);
+			// Product product2 = new Product("Shirt", "red", 9.99, "L", manufacturer1,
+			// type1 );
+			// Product product3 = new Product("Shaggy aktivointimatto", "blue", 24.99, null,
+			// manufacturer2, type2);
+			// Product product4 = new Product("Health Skin+ ankka, riista & peura", null,
+			// 2.59, null, manufacturer3, type3);
 			// productRepo.save(product1);
 			// productRepo.save(product2);
 			// productRepo.save(product3);

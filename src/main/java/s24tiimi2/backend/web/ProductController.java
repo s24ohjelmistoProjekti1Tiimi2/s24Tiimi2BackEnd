@@ -109,6 +109,6 @@ public class ProductController {
         newStock.setStock(product.getStock());
         // päivittää kokonaan uuden määrän kanssa
         productRepository.save(newStock);
-        return "redirect:/productlist";     
+        return "redirect:/productlist";
     }
 }

@@ -26,10 +26,10 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
-        .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/**").permitAll()
-                        .requestMatchers("/home","/").permitAll()
+                        .requestMatchers("/home", "/").permitAll()
                         .requestMatchers("/error", "/error/**").permitAll()
                         .requestMatchers(antMatcher("/css/**")).permitAll()
                         .anyRequest().hasAuthority("ADMIN"))
@@ -38,7 +38,7 @@ public class WebSecurityConfig {
                         .permitAll())
                 .logout(logout -> logout
                         .permitAll())
-                        .csrf(csrf -> csrf.disable());
+                .csrf(csrf -> csrf.disable());
         return http.build();
     }
 
@@ -46,9 +46,8 @@ public class WebSecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of(
-            "https://s24ohjelmistoProjekti1Tiimi2.github.io",
-            "http://localhost:5173"
-            ));
+                "https://s24ohjelmistoProjekti1Tiimi2.github.io",
+                "http://localhost:5173"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         configuration.setAllowCredentials(true);

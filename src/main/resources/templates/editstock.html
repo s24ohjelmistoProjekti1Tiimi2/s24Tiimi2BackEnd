@@ -9,7 +9,6 @@
 
 <body>
 	<h1>Edit Product Stock</h1>
-
 	<div>
 		<form th:object="${product}" th:action="@{/savestock}" action="#" method="post">
 			<input type="hidden" th:field="*{id}" />
@@ -23,7 +22,6 @@
 		<br>
 		<a href="/home">Back to homepage</a>
 	</div>
-
 </body>
 
 </html>

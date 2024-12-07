@@ -11,14 +11,14 @@ import jakarta.validation.constraints.Size;
 public class AppUser {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NotEmpty
     private String username;
 
     @NotEmpty
-    @Size(min=8)
+    @Size(min = 8)
     private String password;
 
     private String role;
@@ -63,5 +63,5 @@ public class AppUser {
     public void setRole(String role) {
         this.role = role;
     }
-    
+
 }

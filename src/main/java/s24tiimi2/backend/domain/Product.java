@@ -20,7 +20,7 @@ public class Product {
 
     @NotEmpty(message = "Tuotteella täytyy olla nimi.")
     private String name;
-    
+
     private String color;
 
     @NotNull(message = "Tuotteella täytyy olla hinta.")
@@ -43,7 +43,8 @@ public class Product {
     @NotNull(message = "Tuotteella täytyy olla tyyppi")
     private Type type;
 
-    public Product(String name, String color, Double price, String size, Integer stock, Manufacturer manufacturer, Type type) {
+    public Product(String name, String color, Double price, String size, Integer stock, Manufacturer manufacturer,
+            Type type) {
         super();
         this.name = name;
         this.color = color;
@@ -57,47 +58,46 @@ public class Product {
     public Product() {
     }
 
-    
     public Long getId() {
         return id;
     }
-    
+
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     public String getName() {
         return name;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public String getColor() {
         return color;
     }
-    
+
     public void setColor(String color) {
         this.color = color;
     }
-    
+
     public Double getPrice() {
         return price;
     }
-    
+
     public void setPrice(Double price) {
         this.price = price;
     }
-    
+
     public String getSize() {
         return size;
     }
-    
+
     public void setSize(String size) {
         this.size = size;
     }
-    
+
     public Integer getStock() {
         return stock;
     }
@@ -105,7 +105,7 @@ public class Product {
     public void setStock(Integer stock) {
         this.stock = stock;
     }
-    
+
     public Manufacturer getManufacturer() {
         return manufacturer;
     }

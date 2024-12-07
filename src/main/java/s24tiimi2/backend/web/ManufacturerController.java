@@ -60,7 +60,7 @@ public class ManufacturerController {
         model.addAttribute("manufacturers", manufacturerRepository.findAll());
         if (productRepository.existsByManufacturerId(manufacturerId)) {
             model.addAttribute("error", "The manufacturer has products! Select one without products.");
-            return "manufacturerlist"; 
+            return "manufacturerlist";
         }
         manufacturerRepository.deleteById(manufacturerId);
         return "redirect:/manufacturerlist";
@@ -74,7 +74,8 @@ public class ManufacturerController {
     }
 
     @PostMapping("/saveedit")
-    public String saveEditedManufacturer(@Valid @ModelAttribute("manufacturer") Manufacturer manufacturer, BindingResult bindingResult) {
+    public String saveEditedManufacturer(@Valid @ModelAttribute("manufacturer") Manufacturer manufacturer,
+            BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "editmanufacturer";
         } else {

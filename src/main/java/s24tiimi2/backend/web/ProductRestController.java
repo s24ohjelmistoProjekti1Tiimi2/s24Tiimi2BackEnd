@@ -32,7 +32,7 @@ public class ProductRestController {
 	@Autowired
 	private CustomerRepository customerRepository;
 
-	//RESTful service to get all products
+	// RESTful service to get all products
 	@GetMapping("/api/products")
 	public @ResponseBody List<Product> getAllProducts() {
 		return (List<Product>) productRepository.findAll();
@@ -42,7 +42,7 @@ public class ProductRestController {
 	public @ResponseBody List<Manufacturer> getAllManufacturers() {
 		return (List<Manufacturer>) manufacturerRepository.findAll();
 	}
-	
+
 	@GetMapping("/api/customers")
 	public @ResponseBody List<Customer> getAllCustomers() {
 		return (List<Customer>) customerRepository.findAll();
@@ -58,6 +58,5 @@ public class ProductRestController {
 	public @ResponseBody Customer createCustomer(@RequestBody Customer customer) {
 		return customerRepository.save(customer);
 	}
-	
 
 }

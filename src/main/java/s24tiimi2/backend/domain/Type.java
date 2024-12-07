@@ -1,6 +1,5 @@
 package s24tiimi2.backend.domain;
 
-
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -51,7 +50,5 @@ public class Type {
     public void setName(String name) {
         this.name = name;
     }
-
-    
 
 }

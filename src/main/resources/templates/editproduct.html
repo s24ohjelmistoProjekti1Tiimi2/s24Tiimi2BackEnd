@@ -13,6 +13,8 @@
 		<form th:object="${product}" th:action="@{/savemodified}" action="#" method="post">
 			<!-- Hidden field for productId -->
 			<input type="hidden" th:field="*{id}" />
+			<!-- Hidden field for stock -->
+			<input type="hidden" th:field="*{stock}" />
 
 			<label for="name">Name</label>
 				<input type="text" id="productName" th:field="*{name}" />

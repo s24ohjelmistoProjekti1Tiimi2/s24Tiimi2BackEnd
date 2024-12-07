@@ -46,7 +46,7 @@
             <td th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}">Manufacturer error</td>
             <br>
             <label for="stock">Stock</label>
-            <input type="number" step="10" id="stock" th:field="*{stock}" />
+            <input type="number" min="0" id="stock" th:field="*{stock}" />
             <td th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}">Stock error</td>
             <br>
             <input type="submit" value="Add new product" />

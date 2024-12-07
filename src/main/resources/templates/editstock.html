@@ -13,7 +13,7 @@
 		<form th:object="${product}" th:action="@{/savestock}" action="#" method="post">
 			<input type="hidden" th:field="*{id}" />
 			<label for="stock">Edit stock</label>
-			<input type="number" id="stock" th:field="*{stock}" />
+			<input type="number" min="0" id="stock" th:field="*{stock}" />
 			<td th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}">Stock error</td>
 			<br>
 			<input type="submit" class="btn btn-success" value="Save"></input>

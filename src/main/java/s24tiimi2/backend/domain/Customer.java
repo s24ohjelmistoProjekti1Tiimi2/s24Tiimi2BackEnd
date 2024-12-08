@@ -20,7 +20,7 @@ public class Customer {
     private String email;
 
     private boolean deleted = false;
-
+    
     
     public Customer() {
     }
@@ -76,10 +76,6 @@ public class Customer {
         return "Customer [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
                 + ", deleted=" + deleted + "]";
     }
-
-
-    
-
 
 
 }

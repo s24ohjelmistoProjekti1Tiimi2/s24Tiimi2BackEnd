@@ -46,10 +46,10 @@ public class ManufacturerController {
     public String deleteManufacturer(@PathVariable("id") Long manufacturerId, Model model) {
         if (productRepository.existsByManufacturerId(manufacturerId)) {
             model.addAttribute("error", "The manufacturer has products! Select one without products.");
-            return "manufacturerlist";
+            return "deleted";
         }
         manufacturerRepository.deleteById(manufacturerId);
-        return "redirect:/manufacturerlist";
+        return "redirect:/deleted";
     }
 
     // Save new manufacturer

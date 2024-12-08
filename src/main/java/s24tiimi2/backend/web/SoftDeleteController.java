@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import s24tiimi2.backend.domain.CustomerRepository;
 import s24tiimi2.backend.domain.Manufacturer;
 import s24tiimi2.backend.domain.ManufacturerRepository;
 import s24tiimi2.backend.domain.Product;
@@ -22,11 +23,15 @@ public class SoftDeleteController {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private CustomerRepository customerRepository;
+
     // Show deleted products and manufacturers
     @GetMapping("/deleted")
     public String getDeletedProducts(Model model) {
         model.addAttribute("products", productRepository.findAllDeleted());
         model.addAttribute("manufacturers", manufacturerRepository.findAllDeleted());
+        model.addAttribute("customers", customerRepository.findAllDeleted());
         return "deleted";
     }
 

@@ -1,8 +1,11 @@
 package s24tiimi2.backend.web;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +19,7 @@ import s24tiimi2.backend.domain.ManufacturerRepository;
 import s24tiimi2.backend.domain.Product;
 import s24tiimi2.backend.domain.ProductRepository;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 //@CrossOrigin(origins = {"http://localhost:5173", "https://s24ohjelmistoprojekti1tiimi2.github.io"})
@@ -59,4 +63,21 @@ public class ProductRestController {
 		return customerRepository.save(customer);
 	}
 
+	// Soft delete customer
+	@PutMapping("/api/customers/{customerId}")
+	public ResponseEntity<Customer> updateCustomerDeletedStatus(@PathVariable Long customerId, @RequestBody Map<String, Object> updates) {
+		Optional<Customer> customerOpt = customerRepository.findById(customerId);
+		if (!customerOpt.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+	
+		Customer customer = customerOpt.get();
+		if (updates.containsKey("deleted")) {
+			customer.setDeleted(Boolean.valueOf(updates.get("deleted").toString()));
+		}
+	
+		customerRepository.save(customer);
+		return ResponseEntity.ok(customer);
+	}
+	
 }

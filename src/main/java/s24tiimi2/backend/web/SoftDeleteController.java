@@ -64,23 +64,6 @@ public class SoftDeleteController {
         return "redirect:/manufacturerlist";
     }
 
-    // Soft delete customer
-    @PutMapping("/customers/{customerId}")
-    public ResponseEntity<Customer> updateCustomerDeletedStatus(@PathVariable Long customerId, @RequestBody Map<String, Object> updates) {
-        Optional<Customer> customerOpt = customerRepository.findById(customerId);
-        if (!customerOpt.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-    
-        Customer customer = customerOpt.get();
-        if (updates.containsKey("deleted")) {
-            customer.setDeleted(Boolean.valueOf(updates.get("deleted").toString()));
-        }
-    
-        customerRepository.save(customer);
-        return ResponseEntity.ok(customer);
-    }
-
     // restore manufacturer
     @PostMapping("/restore-manufacturer/{id}")
     public String restoreDeletedManufacturer(@PathVariable("id") Long manufacturerId) {

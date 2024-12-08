@@ -51,4 +51,12 @@ public class Type {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "Type [id=" + id + ", name=" + name + ", products=" + products + "]";
+    }
+
+
+    
+
 }

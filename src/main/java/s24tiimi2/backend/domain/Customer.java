@@ -19,6 +19,12 @@ public class Customer {
     @NotEmpty
     private String email;
 
+    private boolean deleted = false;
+
+    
+
+
+
     public Customer() {
     }
 
@@ -59,5 +65,24 @@ public class Customer {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
+                + ", deleted=" + deleted + "]";
+    }
+
+
+    
+
+
 
 }

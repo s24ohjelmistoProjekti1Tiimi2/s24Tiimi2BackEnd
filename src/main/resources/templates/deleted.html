@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
-    <title>Product List</title>
+    <title>Deleted List</title>
 </head>
 
 <body>
@@ -21,12 +21,12 @@
             <tr th:each="manufacturer : ${manufacturers}">
                 <td th:text="${manufacturer.name}"></td>
                 <td>
-                    <form th:object="${manufacturer}" th:action="@{/restore-manufacturer/{id}(id=${manufacturer.id})}" action="#" method="post">
+                    <form th:object="${manufacturer}" th:action="@{/restore-manufacturer/{id}(id=${manufacturer.id})}" method="post">
                         <button type="submit" class="btn btn-primary">Restore</button>
                     </form>
                 </td>
                 <td>
-                    <form th:object="${manufacturer}" th:action="@{/delete/{id}(id=${manufacturer.id})}" action="#" method="post">
+                    <form th:object="${manufacturer}" th:action="@{/delete/{id}(id=${manufacturer.id})}" method="post">
                         <button type="submit" class="btn btn-primary">Delete permanently</button>
                     </form>
                 </td>
@@ -56,12 +56,12 @@
                 <td th:text="${product.manufacturer.name}"></td>
                 <td th:text="${product.stock}"></td>
                 <td>
-                    <form th:object="${product}" th:action="@@{/restore-product/{id}(id=${product.id})}"method="post">
+                    <form th:object="${product}" th:action="@{/restore-product/{id}(id=${product.id})}"method="post">
                         <button type="submit" class="btn btn-primary">Restore</button>
                     </form>
                 </td>
                 <td>
-                    <form th:object="${product}" th:action="@@{/delete-product/{id}(id=${product.id})}"method="post">
+                    <form th:object="${product}" th:action="@{/delete-product/{id}(id=${product.id})}"method="post">
                         <button type="submit" class="btn btn-primary">Delete permanently</button>
                     </form>
                 </td>

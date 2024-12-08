@@ -44,7 +44,7 @@ public class SoftDeleteController {
 
     // Soft delete product
     @GetMapping("/softdelete-product/{id}")
-    public String deleteProduct(@PathVariable("id") Long prodId, Model model) {
+    public String softDeleteProduct(@PathVariable("id") Long prodId, Model model) {
         Product product = productRepository.findById(prodId).get();
         product.setDeleted(true);
         productRepository.save(product);
@@ -53,7 +53,7 @@ public class SoftDeleteController {
 
     // Soft delete manufacturer
     @GetMapping("/softdelete-manufacturer/{id}")
-    public String deleteManufacturer(@PathVariable("id") Long manufacturerId, Model model) {
+    public String softDeleteManufacturer(@PathVariable("id") Long manufacturerId, Model model) {
         if (productRepository.existsByManufacturerId(manufacturerId)) {
             model.addAttribute("error", "The manufacturer has products! Select one without products.");
             return "manufacturerlist";
@@ -62,7 +62,7 @@ public class SoftDeleteController {
         manufacturer.setDeleted(true);
         manufacturerRepository.save(manufacturer);
         return "redirect:/manufacturerlist";
-    }
+    }  
 
     // restore manufacturer
     @PostMapping("/restore-manufacturer/{id}")

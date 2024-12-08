@@ -23,7 +23,7 @@ public class CustomerController implements ErrorController {
 
     @GetMapping("/customerlist")
     public String getCustomerList(Model model) {
-        model.addAttribute("customers", customerRepository.findAll());
+        model.addAttribute("customers", customerRepository.findAllActive());
         return "customerlist";
     }
 

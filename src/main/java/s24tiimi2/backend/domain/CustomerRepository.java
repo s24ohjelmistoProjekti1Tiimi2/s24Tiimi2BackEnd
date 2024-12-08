@@ -7,7 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface CustomerRepository extends CrudRepository<Customer, Long> {
 
-
 	@Query("SELECT c FROM Customer c WHERE c.deleted = false")
     List<Customer> findAllActive();
 

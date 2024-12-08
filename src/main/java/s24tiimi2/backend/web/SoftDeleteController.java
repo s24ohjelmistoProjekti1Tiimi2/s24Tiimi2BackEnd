@@ -1,13 +1,19 @@
 package s24tiimi2.backend.web;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import s24tiimi2.backend.domain.Customer;
 import s24tiimi2.backend.domain.CustomerRepository;
 import s24tiimi2.backend.domain.Manufacturer;
 import s24tiimi2.backend.domain.ManufacturerRepository;
@@ -55,6 +61,21 @@ public class SoftDeleteController {
         manufacturer.setDeleted(true);
         manufacturerRepository.save(manufacturer);
         return "redirect:/manufacturerlist";
+    }
+
+    // Soft delete customer
+    @PutMapping("/customers/{customerId}")
+    public ResponseEntity<Customer> updateCustomerDeletedStatus(@PathVariable Long customerId, @RequestBody Map<String, Object> updates) {
+        Customer customer = customerRepository.findById(customerId).get();
+        if (customer == null) {
+            return ResponseEntity.notFound().build();
+        }
+        if (updates.containsKey("deleted")) {
+            customer.setDeleted(Boolean.valueOf(updates.get("deleted").toString()));
+        }
+
+        customerRepository.save(customer);
+        return ResponseEntity.ok(customer);
     }
 
     // restore manufacturer

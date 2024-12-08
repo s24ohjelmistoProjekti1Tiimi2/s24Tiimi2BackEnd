@@ -22,9 +22,6 @@ public class Customer {
     private boolean deleted = false;
 
     
-
-
-
     public Customer() {
     }
 

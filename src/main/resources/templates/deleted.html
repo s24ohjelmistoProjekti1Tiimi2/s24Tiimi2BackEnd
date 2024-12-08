@@ -20,6 +20,16 @@
             </tr>
             <tr th:each="manufacturer : ${manufacturers}">
                 <td th:text="${manufacturer.name}"></td>
+                <td>
+                    <form th:object="${manufacturer}" th:action="@{/restore-manufacturer/{id}(id=${manufacturer.id})}" action="#" method="post">
+                        <button type="submit" class="btn btn-primary">Restore</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:object="${manufacturer}" th:action="@{/delete/{id}(id=${manufacturer.id})}" action="#" method="post">
+                        <button type="submit" class="btn btn-primary">Delete permanently</button>
+                    </form>
+                </td>
             </tr>
         </table>
         <br>
@@ -45,6 +55,16 @@
                 <td th:text="${product.price}"></td>
                 <td th:text="${product.manufacturer.name}"></td>
                 <td th:text="${product.stock}"></td>
+                <td>
+                    <form th:object="${product}" th:action="@@{/restore-product/{id}(id=${product.id})}"method="post">
+                        <button type="submit" class="btn btn-primary">Restore</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:object="${product}" th:action="@@{/delete-product/{id}(id=${product.id})}"method="post">
+                        <button type="submit" class="btn btn-primary">Delete permanently</button>
+                    </form>
+                </td>
         </table>
         <br>
         <a href="/home" class="btn btn-dark btn-smaller" style="margin-top: 10px; margin-bottom: 10px;">

@@ -64,6 +64,13 @@ public class ProductController {
         }
     }
 
+    // Delete product
+    @GetMapping("/delete-product/{id}")
+    public String deleteProduct(@PathVariable("id") Long prodId, Model model) {
+        productRepository.deleteById(prodId);
+        return "redirect:/productlist";
+    }
+
     // Edit product
     @GetMapping("/edit-product/{id}")
     public String editProduct(@PathVariable("id") Long prodId, Model model) {

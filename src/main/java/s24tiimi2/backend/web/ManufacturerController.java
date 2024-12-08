@@ -41,6 +41,17 @@ public class ManufacturerController {
         return "addmanufacturer";
     }
 
+    // Delete manufacturer
+    @GetMapping("/delete-manufacturer/{id}")
+    public String deleteManufacturer(@PathVariable("id") Long manufacturerId, Model model) {
+        if (productRepository.existsByManufacturerId(manufacturerId)) {
+            model.addAttribute("error", "The manufacturer has products! Select one without products.");
+            return "manufacturerlist";
+        }
+        manufacturerRepository.deleteById(manufacturerId);
+        return "redirect:/manufacturerlist";
+    }
+
     // Save new manufacturer
     @PostMapping("/savemanufacturer")
     public String saveNewManufacturer(@Valid @ModelAttribute("manufacturer") Manufacturer manufacturer,

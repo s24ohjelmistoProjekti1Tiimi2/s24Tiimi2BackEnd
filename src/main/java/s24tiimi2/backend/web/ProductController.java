@@ -98,11 +98,11 @@ public class ProductController {
     @PostMapping("/savestock")
     public String saveStock(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult,
             Model model) {
-        Product newStock = productRepository.findById(product.getId()).orElseThrow();
-        // päivittää vain stock määrän
-        newStock.setStock(product.getStock());
-        // päivittää kokonaan uuden määrän kanssa
-        productRepository.save(newStock);
-        return "redirect:/productlist";
+        if (bindingResult.hasErrors()) {
+            return "editstock";
+        } else {
+            productRepository.save(product);
+            return "redirect:/productlist";
+        }
     }
 }

@@ -1,6 +1,7 @@
 package s24tiimi2.backend.web;
 
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -66,14 +67,16 @@ public class SoftDeleteController {
     // Soft delete customer
     @PutMapping("/customers/{customerId}")
     public ResponseEntity<Customer> updateCustomerDeletedStatus(@PathVariable Long customerId, @RequestBody Map<String, Object> updates) {
-        Customer customer = customerRepository.findById(customerId).get();
-        if (customer == null) {
+        Optional<Customer> customerOpt = customerRepository.findById(customerId);
+        if (!customerOpt.isPresent()) {
             return ResponseEntity.notFound().build();
         }
+    
+        Customer customer = customerOpt.get();
         if (updates.containsKey("deleted")) {
             customer.setDeleted(Boolean.valueOf(updates.get("deleted").toString()));
         }
-
+    
         customerRepository.save(customer);
         return ResponseEntity.ok(customer);
     }

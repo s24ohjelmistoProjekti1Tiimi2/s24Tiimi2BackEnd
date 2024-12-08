@@ -9,8 +9,8 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
 
 
 	@Query("SELECT c FROM Customer c WHERE c.deleted = false")
-    List<Manufacturer> findAllActive();
+    List<Customer> findAllActive();
 
     @Query("SELECT c FROM Customer c WHERE c.deleted = true")
-    List<Manufacturer> findAllDeleted();
+    List<Customer> findAllDeleted();
 }

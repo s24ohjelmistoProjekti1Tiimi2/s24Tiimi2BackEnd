@@ -4,30 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
     <title>Add customer</title>
+    <style>
+        input {
+            margin-right: 10px;
+        }
+
+        select {
+            margin-right: 10px;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        .container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Add new customer</h1>
-    <div>
-        <form th:object="${customer}" th:action="@{/savecustomer}" action="#" method="post">
-            <label for="firstname">First name: </label>
-            <input type="text" id="firstname" th:field="*{firstname}" />
-            <br>
-            <label for="lastname">Last name: </label>
-            <input type="text" id="lastname" th:field="*{lastname}" />
-            <br>
-            <label for="email">Email: </label>
-            <input type="text" id="email" th:field="*{email}" />
-            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</td>
-            <br>
-            <button type="submit">Save</button>
-        </form>
+    <div class="container">
+        <h1>Add new customer</h1>
+        <div>
+            <form th:object="${customer}" th:action="@{/savecustomer}" action="#" method="post">
+                <div class="mb-3 d-flex align-items-center">
+                    <label for="firstname">First name: </label>
+                    <input type="text" id="firstname" th:field="*{firstname}" />
+                </div>
+                <div class="mb-3 d-flex align-items-center">
+                    <label for="lastname">Last name: </label>
+                    <input type="text" id="lastname" th:field="*{lastname}" />
+                </div>
+                <div class="mb-3 d-flex align-items-center">
+                    <label for="email">Email: </label>
+                    <input type="text" id="email" th:field="*{email}" />
+                    <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger">Email error
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success btn-smaller">Save</button>
+                <button type="button" onclick="location.href='/customerlist'"
+                    class="btn btn-danger btn-smaller">Cancel</button>
+                <br>
+            </form>
+        </div>
+        <a href="/home" class="btn btn-dark btn-smaller" style="margin-top: 20px; margin-bottom: 20px;">Back
+            to homepage</a>
     </div>
-    <br>
-    <button type="button" onclick="location.href='/customerlist'">Cancel</button>
-    <br>
-    <a href="/home">Back to homepage</a>
 </body>
 
 </html>

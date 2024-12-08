@@ -6,56 +6,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
   <title>Manufacturer's products</title>
+  <style>
+    input {
+      margin-right: 10px;
+    }
+
+    select {
+      margin-right: 10px;
+    }
+
+    label {
+      margin-right: 10px;
+    }
+
+    .container {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 
 <body>
   <div th:replace="~{fragments :: headerfragment}"></div>
 
   <div class="container">
-  <div class="mb-3">
-  <h2>Search products by manufacturer</h2>
-</div>
-  <div class="mb-3">
-  <form th:action="@{/productsbymanufacturer}" method="post">
-    <label for="manufacturer">Select Manufacturer:</label>
-    <select name="manufacturerId">
-      <option value="" disabled selected>Select manufacturer</option>
-      <option th:each="manufacturer : ${manufacturers}" th:value="${manufacturer.id}" th:text="${manufacturer.name}">
-      </option>
-    </select>
-    <button type="submit">Seach products</button>
-  </form>
-</div>
+    <div class="mb-3">
+      <h2>Search products by manufacturer</h2>
+    </div>
+    <div class="mb-3">
+      <form th:action="@{/productsbymanufacturer}" method="post">
+        <label for="manufacturer">Select Manufacturer:</label>
+        <select name="manufacturerId">
+          <option value="" disabled selected>Select manufacturer</option>
+          <option th:each="manufacturer : ${manufacturers}" th:value="${manufacturer.id}"
+            th:text="${manufacturer.name}">
+          </option>
+        </select>
+        <button type="submit" class="btn btn-info btn-smaller">Seach products</button>
+      </form>
+    </div>
 
-  <div th:if="${products != null}">
-    <h2 th:text="${manufacturer.name} + ' products'"></h2>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Color</th>
-          <th>Size</th>
-          <th>Price</th>
-          <th>Manufacturer</th>
-          <th>Stock</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr th:each="product: ${products}">
-          <td th:text="${product.name}"></td>
-          <td th:text="${product.type.name}"></td>
-          <td th:text="${product.color}"></td>
-          <td th:text="${product.size}"></td>
-          <td th:text="${product.price}"></td>
-          <td th:text="${product.manufacturer.name}"></td>
-          <td th:text="${product.stock}"></td>
-        </tr>
-      </tbody>
-    </table>
+    <div th:if="${products != null}">
+      <h2 th:text="${manufacturer.name} + ' products'"></h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Color</th>
+            <th>Size</th>
+            <th>Price</th>
+            <th>Manufacturer</th>
+            <th>Stock</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="product: ${products}">
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.type.name}"></td>
+            <td th:text="${product.color}"></td>
+            <td th:text="${product.size}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.manufacturer.name}"></td>
+            <td th:text="${product.stock}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <a href="/home" class="btn btn-dark btn-smaller" style="margin-top: 10px; margin-bottom: 20px;">Back to homepage</a>
   </div>
-  <a href="/home" class="btn btn-dark btn-smaller" style="margin-top: 10px; margin-bottom: 20px;">Back to homepage</a>
-</div>
 
 </body>
 

@@ -4,27 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
     <title>Edit Manufacturer</title>
+    <style>
+        input {
+            margin-right: 10px;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        .container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Edit Manufacturer</h1>
-    <div>
-        <form th:object="${manufacturer}" th:action="@{/saveedit}" action="#" method="post">
-            <input type="hidden" th:field="*{id}" />
-
-            <label for="name">Name</label>
-            <input type="text" id="name" th:field="*{name}" />
-            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</td>
-
-            <br>
-            <input type="submit" class="btn btn-success" value="Save"></input>
-        </form>
+    <div class="container">
+        <h1>Edit Manufacturer</h1>
         <div>
-            <button type="button" onclick="location.href='/manufacturerlist'">Cancel</button>
+            <form th:object="${manufacturer}" th:action="@{/saveedit}" action="#" method="post">
+                <input type="hidden" th:field="*{id}" />
+                <div class="mb-3 d-flex align-items-center">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" th:field="*{name}" />
+                    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger">Name error</div>
+                </div>
+                <br>
+                <input type="submit" class="btn btn-success" value="Save"></input>
+                <button type="button" onclick="location.href='/manufacturerlist'" class="btn btn-danger btn-smaller">Cancel</button>
+            </form>
+            <br>
+            <a href="/home" class="btn btn-dark btn-smaller" style="margin-top: 10px; margin-bottom: 20px;">Back
+                to homepage</a>
         </div>
-        <br>
-        <a href="/home">Back to homepage</a>
     </div>
 </body>
 

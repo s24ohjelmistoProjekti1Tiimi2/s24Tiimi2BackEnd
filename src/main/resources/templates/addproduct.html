@@ -6,10 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
     <title>Add product</title>
+
+    <style>
+        input{
+            margin-right: 10px;
+        }
+
+        select{
+            margin-right: 10px;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        .container{
+            margin-top: 20px; 
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container" style="margin-top: 20px; margin-bottom: 20px;">
+    <div class="container">
         <h1 style="margin-bottom: 10px;">Add new product</h1>
         <div>
             <form th:object="${product}" th:action="@{/saveproduct}" action="#" method="post">
@@ -20,7 +42,7 @@
                 </div>
 
                 <div class="mb-3 d-flex align-items-center">
-                    <label for="typelist" class="me-3">Type</label>
+                    <label for="typelist">Type</label>
                     <select id="typelist" th:field="*{type}" class="form-control" style="width: max-content;">
                         <option value="">Select type</option>
                         <option th:each="type: ${types}" th:value="${type.id}" th:text="${type.name}"></option>
@@ -33,7 +55,7 @@
                     <input type="text" id="color" th:field="*{color}" />
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3 d-flex align-items-center" >
                     <label for="size">Size</label>
                     <select id="size" th:field="*{size}" class="form-control" style="width: max-content;">
                         <option value="">-</option>
@@ -43,13 +65,13 @@
                     </select>
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3 d-flex align-items-center">
                     <label for="price">Price</label>
                     <input type="text" id="price" th:field="*{price}" />
-                    <div th:if="${#fields.hasErrors('price')}" class="text-danger" th:errors="*{price}">Price error</div>
+                    <div th:if="${#fields.hasErrors('price')}" class="text-danger ms-3" th:errors="*{price}">Price error</div>
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3 d-flex align-items-center">
                     <label for="manufacturer">Manufacturer</label>
                     <select id="manufacturer" th:field="*{manufacturer}" class="form-control"
                         style="width: max-content;">
@@ -57,13 +79,13 @@
                         <option th:each="manufacturer: ${manufacturers}" th:value="${manufacturer.id}"
                             th:text="${manufacturer.name}"></option>
                     </select>
-                    <div th:if="${#fields.hasErrors('manufacturer')}" class="text-danger" th:errors="*{manufacturer}">Manufacturer error</div>
+                    <div th:if="${#fields.hasErrors('manufacturer')}" class="text-danger ms-3" th:errors="*{manufacturer}">Manufacturer error</div>
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3 d-flex align-items-center">
                     <label for="stock">Stock</label>
                     <input type="number" min="0" id="stock" th:field="*{stock}" />
-                    <div th:if="${#fields.hasErrors('stock')}" class="text-danger" th:errors="*{stock}">Stock error</div>
+                    <div th:if="${#fields.hasErrors('stock')}" class="text-danger ms-3" th:errors="*{stock}">Stock error</div>
                 </div>
                 
                 <input type="submit" class="btn btn-primary btn-smaller" style="margin-top: 10px;"

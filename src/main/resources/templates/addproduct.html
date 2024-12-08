@@ -4,57 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
     <title>Add product</title>
 </head>
 
 <body>
-    <h1>Add new product</h1>
-    <div>
-        <form th:object="${product}" th:action="@{/saveproduct}" action="#" method="post">
-            <label for="name">Name</label>
-            <input type="text" id="name" th:field="*{name}" />
-            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</td>
-            <br>
-            <label for="typelist">Type</label>
-            <select id="typelist" th:field="*{type}" class="form-control">
-                <option value="">Select type</option>
-                <option th:each="type: ${types}" th:value="${type.id}" th:text="${type.name}"></option>
-            </select>
-            <td th:if="${#fields.hasErrors('type')}" th:errors="*{type}">Type error</td>
-            <br>
-            <label type="color">Color</label>
-            <input type="text" id="color" th:field="*{color}" />
-            <br>
-            <label for="size">Size</label>
-            <select id="size" th:field="*{size}" class="form-control">
-                <option value="">-</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-            </select>
-            <br>
-            <label for="price">Price</label>
-            <input type="text" id="price" th:field="*{price}" />
-            <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price error</td>
-            <br>
-            <label for="manufacturer">Manufacturer</label>
-            <select id="manufacturer" th:field="*{manufacturer}" class="form-control">
-                <option value="">Select manufacturer</option>
-                <option th:each="manufacturer: ${manufacturers}" th:value="${manufacturer.id}"
-                    th:text="${manufacturer.name}"></option>
-            </select>
-            <td th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}">Manufacturer error</td>
-            <br>
-            <label for="stock">Stock</label>
-            <input type="number" min="0" id="stock" th:field="*{stock}" />
-            <td th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}">Stock error</td>
-            <br>
-            <input type="submit" value="Add new product" />
-        <form>
-        <br>
-        <button type="button" onclick="location.href='/productlist'">Cancel</button>
-        <br>
-        <a href="/home">Back to homepage</a>
+    <div class="container" style="margin-top: 20px; margin-bottom: 20px;">
+        <h1 style="margin-bottom: 10px;">Add new product</h1>
+        <div>
+            <form th:object="${product}" th:action="@{/saveproduct}" action="#" method="post">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" th:field="*{name}" />
+                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger ms-2">Name error</td>
+                </div>
+
+                <div class="mb-3 d-flex align-items-center">
+                    <label for="typelist" class="me-3">Type</label>
+                    <select id="typelist" th:field="*{type}" class="form-control" style="width: max-content;">
+                        <option value="">Select type</option>
+                        <option th:each="type: ${types}" th:value="${type.id}" th:text="${type.name}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('type')}" class="text-danger ms-3" th:errors="*{type}">Type error</div>
+                </div>
+
+                <div class="mb-3">
+                    <label type="color">Color</label>
+                    <input type="text" id="color" th:field="*{color}" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="size">Size</label>
+                    <select id="size" th:field="*{size}" class="form-control" style="width: max-content;">
+                        <option value="">-</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="price">Price</label>
+                    <input type="text" id="price" th:field="*{price}" />
+                    <div th:if="${#fields.hasErrors('price')}" class="text-danger" th:errors="*{price}">Price error</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="manufacturer">Manufacturer</label>
+                    <select id="manufacturer" th:field="*{manufacturer}" class="form-control"
+                        style="width: max-content;">
+                        <option value="">Select manufacturer</option>
+                        <option th:each="manufacturer: ${manufacturers}" th:value="${manufacturer.id}"
+                            th:text="${manufacturer.name}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('manufacturer')}" class="text-danger" th:errors="*{manufacturer}">Manufacturer error</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="stock">Stock</label>
+                    <input type="number" min="0" id="stock" th:field="*{stock}" />
+                    <div th:if="${#fields.hasErrors('stock')}" class="text-danger" th:errors="*{stock}">Stock error</div>
+                </div>
+                
+                <input type="submit" class="btn btn-primary btn-smaller" style="margin-top: 10px;"
+                    value="Add new product" />
+                <form>
+                    <button type="button" onclick="location.href='/productlist'" class="btn btn-danger btn-smaller"
+                        style="margin-top: 10px;">Cancel</button>
+                    <br>
+                    <a href="/home" class="btn btn-dark btn-smaller" style="margin-top: 10px; margin-bottom: 20px;">Back
+                        to homepage</a>
+        </div>
     </div>
 </body>
 

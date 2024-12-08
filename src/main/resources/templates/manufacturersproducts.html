@@ -12,7 +12,10 @@
   <div th:replace="~{fragments :: headerfragment}"></div>
 
   <div class="container">
+  <div class="mb-3">
   <h2>Search products by manufacturer</h2>
+</div>
+  <div class="mb-3">
   <form th:action="@{/productsbymanufacturer}" method="post">
     <label for="manufacturer">Select Manufacturer:</label>
     <select name="manufacturerId">
@@ -22,10 +25,11 @@
     </select>
     <button type="submit">Seach products</button>
   </form>
+</div>
 
   <div th:if="${products != null}">
     <h2 th:text="${manufacturer.name} + ' products'"></h2>
-    <table>
+    <table class="table table-striped">
       <thead>
         <tr>
           <th>Name</th>
@@ -50,7 +54,7 @@
       </tbody>
     </table>
   </div>
-  <a href="/home">Back to homepage</a>
+  <a href="/home" class="btn btn-dark btn-smaller" style="margin-top: 10px; margin-bottom: 20px;">Back to homepage</a>
 </div>
 
 </body>

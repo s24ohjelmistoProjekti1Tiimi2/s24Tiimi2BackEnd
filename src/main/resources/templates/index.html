@@ -1,42 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="/css/bootstrap.min.css"
-      th:href="@{/css/bootstrap.min.css}"
-    />
-    <title>Product List</title>
-  </head>
 
-  <body>
-    <div th:replace="~{fragments :: headerfragment}"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <title>Omppu and Rane's Back-end</title>
+</head>
 
-    <div class="container">
-      <!--     <div class="row">
+<body>
+  <div th:replace="~{fragments :: headerfragment}"></div>
+
+  <div class="container">
+    <!--     <div class="row">
             <div class="col">
                 <a th:href="@{/login}" class="col btn btn-info">Login as Admin</a>
                </div>
         </div> -->
 
-      <div class="row">
-        <div class="col">
-          <h1>Omppu and Rane's Back-end Application</h1>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <a
-            th:href="@{https://s24ohjelmistoprojekti1tiimi2.github.io/s24Tiimi2FrontEnd/#/}"
-            class="col btn btn-info"
-            >CLICK HERE TO SEE SHOP PAGE</a
-          >
-        </div>
+    <div class="row">
+      <div class="col">
+        <h1 style="text-align: center;">Omppu and Rane's Back-end Application</h1>
       </div>
     </div>
-  </body>
+
+    <div class="row" style="margin-top: 20px;">
+      <div class="col">
+        <a th:href="@{https://s24ohjelmistoprojekti1tiimi2.github.io/s24Tiimi2FrontEnd/#/}"
+          class="col btn btn-info">CLICK HERE TO ENTER THE SHOP<br>
+          <small>Buy the latest and popular dog supplies</small>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>

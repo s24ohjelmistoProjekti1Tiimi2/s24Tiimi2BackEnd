@@ -17,11 +17,11 @@
     <div th:if="${error}" style="color:red;">
       <p th:text="${error}"></p>
     </div>
-    <table class="table table-striped">
+    <table class="table table-striped" style="max-width: 500px;">
       <tr>
         <th>Name</th>
-        <th></th>
-        <th></th>
+        <th style="width: 30px;"></th>
+        <th style="width: 30px;"></th>
       </tr>
       <tr th:each="manufacturer : ${manufacturers}">
         <td th:text="${manufacturer.name}"></td>

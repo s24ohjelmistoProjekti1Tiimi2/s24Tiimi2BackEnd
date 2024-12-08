@@ -1,11 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <title>Product List</title>
 </head>
+
 <body>
-    
+    <div th:replace="~{fragments :: headerfragment}"></div>
+    <div class="container">
+        <h1 class="h1">Deleted manufacturers</h1>
+        <table class="table table-striped" style="max-width: 500px;">
+            <tr>
+                <th>Name</th>
+                <th style="width: 30px;"></th>
+                <th style="width: 30px;"></th>
+            </tr>
+            <tr th:each="manufacturer : ${manufacturers}">
+                <td th:text="${manufacturer.name}"></td>
+            </tr>
+        </table>
+        <br>
+        <h1 class="h1">Deleted products</h1>
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Color</th>
+                <th>Size</th>
+                <th>Price</th>
+                <th>Manufacturer</th>
+                <th>Stock</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.type.name}"></td>
+                <td th:text="${product.color}"></td>
+                <td th:text="${product.size}"></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.manufacturer.name}"></td>
+                <td th:text="${product.stock}"></td>
+        </table>
+        <br>
+        <a href="/home" class="btn btn-dark btn-smaller" style="margin-top: 10px; margin-bottom: 10px;">
+            Back to homepage</a>
+    </div>
 </body>
+
 </html>

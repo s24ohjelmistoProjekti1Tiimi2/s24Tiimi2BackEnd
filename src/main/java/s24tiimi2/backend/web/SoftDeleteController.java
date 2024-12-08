@@ -52,4 +52,6 @@ public class SoftDeleteController {
         return "redirect:/manufacturerlist";
     }
 
+    // restore
+
 }

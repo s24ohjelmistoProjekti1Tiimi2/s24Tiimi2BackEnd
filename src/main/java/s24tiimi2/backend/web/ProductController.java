@@ -107,11 +107,7 @@ public class ProductController {
         if (bindingResult.hasErrors()) {
             return "editstock";
         } else {
-            Product newStock = productRepository.findById(product.getId()).orElseThrow();
-            // päivittää vain stock määrän
-            newStock.setStock(product.getStock());
-            // päivittää kokonaan uuden määrän kanssa
-            productRepository.save(newStock);
+            productRepository.save(product);
             return "redirect:/productlist";
         }
     }

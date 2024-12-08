@@ -30,7 +30,7 @@ public class ManufacturerController {
     // Show manufacturer-list
     @GetMapping("/manufacturerlist")
     public String getAllManufacturersList(Model model) {
-        model.addAttribute("manufacturers", manufacturerRepository.findAll());
+        model.addAttribute("manufacturers", manufacturerRepository.findAllActive());
         return "manufacturerlist";
     }
 
@@ -56,13 +56,15 @@ public class ManufacturerController {
     // Delete manufacturer
     @GetMapping("/delete-manufacturer/{id}")
     public String deleteManufacturer(@PathVariable("id") Long manufacturerId, Model model) {
-
-        model.addAttribute("manufacturers", manufacturerRepository.findAll());
+        //model.addAttribute("manufacturers", manufacturerRepository.findAll());
         if (productRepository.existsByManufacturerId(manufacturerId)) {
             model.addAttribute("error", "The manufacturer has products! Select one without products.");
             return "manufacturerlist";
         }
-        manufacturerRepository.deleteById(manufacturerId);
+        // hard delete: manufacturerRepository.deleteById(manufacturerId);
+        Manufacturer manufacturer = manufacturerRepository.findById(manufacturerId).get();
+        manufacturer.setDeleted(true);
+        manufacturerRepository.save(manufacturer);
         return "redirect:/manufacturerlist";
     }
 

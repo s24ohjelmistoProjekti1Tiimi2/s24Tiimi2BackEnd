@@ -22,6 +22,8 @@ public class Manufacturer {
 	@NotEmpty(message = "Valmistajalla täytyy olla nimi.")
 	private String name;
 
+	private boolean deleted = false;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "manufacturer")
 	@JsonIgnoreProperties("manufacturer")
 	private List<Product> products;
@@ -50,6 +52,14 @@ public class Manufacturer {
 		this.name = name;
 	}
 
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+	
 	@Override
 	public String toString() {
 		return "Manufacturer [id=" + id + ", name=" + name + "]";
@@ -62,5 +72,6 @@ public class Manufacturer {
 	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
+
 
 }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
+import s24tiimi2.backend.domain.Manufacturer;
 import s24tiimi2.backend.domain.ManufacturerRepository;
 import s24tiimi2.backend.domain.Product;
 import s24tiimi2.backend.domain.ProductRepository;
@@ -36,7 +37,7 @@ public class ProductController {
     // Show product-list
     @GetMapping("/productlist")
     public String getAllProductsList(Model model) {
-        model.addAttribute("products", productRepository.findAll());
+        model.addAttribute("products", productRepository.findAllActive());
         return "productlist";
     }
 
@@ -61,13 +62,6 @@ public class ProductController {
             productRepository.save(product);
             return "redirect:/productlist";
         }
-    }
-
-    // Delete product
-    @GetMapping("/delete-product/{id}")
-    public String deleteProduct(@PathVariable("id") Long prodId, Model model) {
-        productRepository.deleteById(prodId);
-        return "redirect:/productlist";
     }
 
     // Edit product

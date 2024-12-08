@@ -9,4 +9,8 @@ public interface ManufacturerRepository extends CrudRepository<Manufacturer, Lon
     
     @Query("SELECT m FROM Manufacturer m WHERE m.deleted = false")
     List<Manufacturer> findAllActive();
+
+    @Query("SELECT m FROM Manufacturer m WHERE m.deleted = true")
+    List<Manufacturer> findAllDeleted();
+    
 }

@@ -31,6 +31,8 @@ public class Product {
     @NotNull(message = "Tuotteella oltava varastomäärä")
     private Integer stock;
 
+    private boolean deleted = false;
+
     @ManyToOne
     @JsonIgnoreProperties("products")
     @JoinColumn(name = "manufacturerId")
@@ -104,6 +106,14 @@ public class Product {
 
     public void setStock(Integer stock) {
         this.stock = stock;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 
     public Manufacturer getManufacturer() {

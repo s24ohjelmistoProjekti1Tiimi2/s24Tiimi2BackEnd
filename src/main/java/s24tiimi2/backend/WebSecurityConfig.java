@@ -32,6 +32,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/home", "/").permitAll()
                         .requestMatchers("/error", "/error/**").permitAll()
                         .requestMatchers(antMatcher("/css/**")).permitAll()
+                        .requestMatchers(antMatcher("/images/**")).permitAll()
                         .anyRequest().hasAuthority("ADMIN"))
                 .formLogin(formlogin -> formlogin
                         .defaultSuccessUrl("/", true)

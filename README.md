@@ -1,37 +1,34 @@
-# Ohjelmistoprojekti 1 - Back end
+# Software Project 1 - Backend
 
-Tämä projekti on osa ohjelmistoprojekti 1 -kurssia ja sen tarkoituksena on tarjota kauppiaalle back end, 
-jolla hän voi hallita kaupassa olevia tuotteita, valmistajia ja asiakkaita. Tietoja voidaan hakea, lisätä, muokkaa ja poistaa REST-rajapinnan kautta.
+This project is part of the Software Project 1 course and aims to provide a backend for a shopkeeper
+to manage products, manufacturers, and customers in the store. 
 
-Saatavilla 
-
+Available at:  
 **https://s24-tiimi2-backend-s24tiimi2backend.2.rahtiapp.fi/**
 
-## Ominaisuudet
+## Features
 
-- **Tuotteet:**  
-  - Tuotteiden lisääminen, muokkaaminen, lukeminen ja poistaminen.  
+- **Products:**  
+  - Add, update, read, and delete products.  
 
-- **Valmistajat:**  
-  - Valmistajien lisääminen, muokkaaminen, lukeminen ja poistaminen.  
+- **Manufacturers:**  
+  - Add, update, read, and delete manufacturers.  
 
-- **Asiakkaat:**  
-  - Asiakkaiden lisääminen, muokkaaminen, lukeminen ja poistaminen.  
+- **Customers:**  
+  - Add, update, read, and delete customers.  
 
-## REST API -toiminnot
+## REST API Endpoints
 
-- **GET /api/products:** Hakee kaikki tuotteet.
-- **GET /api/manufacturers:** Hakee kaikki valmistajat.
-- **GET /api/customers:** Hakee kaikki asiakkaat.
-- **POST /api/customers:** Lisää uuden asiakkaan.
-- **PUT /api/customers/{customerId}:** Päivittää asiakkaan tietoja,
+- **GET /api/products:** Retrieves all products.
+- **GET /api/manufacturers:** Retrieves all manufacturers.
+- **GET /api/customers:** Retrieves all customers.
+- **POST /api/customers:** Adds a new customer.
+- **PUT /api/customers/{customerId}:** Updates customer information.
 
-## Teknologiat
+## Technologies
 
 - **Backend:**  
   - Spring Boot  
   - Spring Data JPA  
-  - H2/PostgreSQL-tietokanta
+  - H2/PostgreSQL database  
   - Bootstrap  
-
-   

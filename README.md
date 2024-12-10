@@ -20,6 +20,7 @@ Available at:
 ## REST API Endpoints
 
 - **GET /api/products:** Retrieves all products.
+- **GET /api/products/type/{typename}:** Retrieves all products by type.
 - **GET /api/manufacturers:** Retrieves all manufacturers.
 - **GET /api/customers:** Retrieves all customers.
 - **POST /api/customers:** Adds a new customer.

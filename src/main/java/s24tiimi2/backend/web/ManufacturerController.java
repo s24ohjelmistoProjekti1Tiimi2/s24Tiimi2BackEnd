@@ -7,10 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
 import s24tiimi2.backend.domain.Manufacturer;
@@ -54,8 +52,7 @@ public class ManufacturerController {
 
     // Save new manufacturer
     @PostMapping("/savemanufacturer")
-    public String saveNewManufacturer(@Valid @ModelAttribute("manufacturer") Manufacturer manufacturer,
-            BindingResult bindingResult) {
+    public String saveNewManufacturer(@Valid Manufacturer manufacturer, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "addmanufacturer";
         } else {
@@ -73,8 +70,7 @@ public class ManufacturerController {
 
     // Save edited manufacturer
     @PostMapping("/saveedit")
-    public String saveEditedManufacturer(@Valid @ModelAttribute("manufacturer") Manufacturer manufacturer,
-            BindingResult bindingResult) {
+    public String saveEditedManufacturer(@Valid Manufacturer manufacturer, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "editmanufacturer";
         } else {
@@ -94,7 +90,7 @@ public class ManufacturerController {
 
     // Search and show products by manufacturer
     @PostMapping("/productsbymanufacturer")
-    public String searchProductsByManufacturer(@RequestParam("manufacturerId") Long manufacturerId, Model model) {
+    public String searchProductsByManufacturer(Long manufacturerId, Model model) {
         Manufacturer manufacturer = manufacturerRepository.findById(manufacturerId).orElse(null);
         List<Product> products = productRepository.findByManufacturer_Id(manufacturerId);
         model.addAttribute("products", products);

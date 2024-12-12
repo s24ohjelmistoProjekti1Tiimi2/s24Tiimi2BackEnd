@@ -25,8 +25,8 @@ Available at:
    ./mvnw spring-boot:run
 
 5. Access the application
-
-    http://localhost:8080
+   ```bash
+   http://localhost:8080
 
 ## Features
 

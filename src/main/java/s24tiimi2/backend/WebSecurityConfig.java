@@ -48,7 +48,7 @@ public class WebSecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of(
                 "https://s24ohjelmistoProjekti1Tiimi2.github.io",
-                "http://localhost:5173"));
+                "http://localhost:5173", "https://omppuandrane.netlify.app/"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         configuration.setAllowCredentials(true);

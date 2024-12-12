@@ -46,6 +46,7 @@ public class SoftDeleteController {
     // Soft delete manufacturer
     @GetMapping("/softdelete-manufacturer/{id}")
     public String softDeleteManufacturer(@PathVariable("id") Long manufacturerId, Model model) {
+        model.addAttribute("manufacturers", manufacturerRepository.findAll());
         if (productRepository.existsByManufacturerId(manufacturerId)) {
             model.addAttribute("error", "The manufacturer has products! Select one without products.");
             return "manufacturerlist";

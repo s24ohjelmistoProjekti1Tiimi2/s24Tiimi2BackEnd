@@ -6,6 +6,28 @@ to manage products, manufacturers, and customers in the store.
 Available at:  
 **https://s24-tiimi2-backend-s24tiimi2backend.2.rahtiapp.fi/**
 
+## Installation and running locally
+
+1. Clone the repository
+   ```bash
+    git clone https://github.com/s24ohjelmistoProjekti1Tiimi2/s24Tiimi2BackEnd.git
+
+2. Navigate to the project directory
+   ```bash
+   cd s24Tiimi2BackEnd
+
+3. Build the project
+   ```bash
+   ./mvnw clean install
+
+4. Run the application
+   ```bash
+   ./mvnw spring-boot:run
+
+5. Access the application
+
+    http://localhost:8080
+
 ## Features
 
 - **Products:**  

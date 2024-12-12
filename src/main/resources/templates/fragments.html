@@ -1,58 +1,51 @@
 <!DOCTYPE html>
-<html
-  xmlns:th="http://www.thymeleaf.org"
-  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
->
-  <link
-    type="text/css"
-    rel="stylesheet"
-    href="/css/bootstrap.min.css"
-    th:href="@{/css/bootstrap.min.css}"
-  />
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 
-  <head>
-    <title>Thymeleaf Fragments</title>
-  </head>
+<head>
+  <title>Thymeleaf Fragments</title>
+</head>
 
-  <body>
-    <!-- Content of this fragment is a page header -->
-    <header th:fragment="headerfragment">
+<body>
+  <!-- Content of this fragment is a page header -->
+  <header th:fragment="headerfragment">
 
-      <!-- This div contents shown, if viewer has logged in as Admin -->
-      <div class="container" sec:authorize="hasAuthority('ADMIN')">
-        <div class="row" style="margin-top: 20px;">
-          <div class="col">
-            <a th:href="@{/home}" class="col btn btn-primary">Home</a>
-          </div>
-          <div class="col">
-            <a th:href="@{/productlist}" class="col btn btn-primary">Products</a>
-          </div>
-          <div class="col">
-            <a th:href="@{/manufacturerlist}" class="col btn btn-primary">Manufacturers</a>
-          </div>
-          <div class="col">
-            <a th:href="@{/productsbymanufacturer}" class="col btn btn-primary">Products by Manufacturer</a>
-          </div>
-          <div class="col">
-            <a th:href="@{/customerlist}" class="col btn btn-primary">Customers</a>
-          </div>
-          <br />
-          <br />
+    <!-- This div contents shown, if viewer has logged in as Admin -->
+    <div class="container" sec:authorize="hasAuthority('ADMIN')">
+      <div class="row" style="margin-top: 20px;">
+        <div class="col">
+          <a th:href="@{/home}" class="col btn btn-primary">Home</a>
         </div>
+        <div class="col">
+          <a th:href="@{/productlist}" class="col btn btn-primary">Products</a>
+        </div>
+        <div class="col">
+          <a th:href="@{/manufacturerlist}" class="col btn btn-primary">Manufacturers</a>
+        </div>
+        <div class="col">
+          <a th:href="@{/productsbymanufacturer}" class="col btn btn-primary">Products by Manufacturer</a>
+        </div>
+        <div class="col">
+          <a th:href="@{/customerlist}" class="col btn btn-primary">Customers</a>
+        </div>
+        <br />
+        <br />
       </div>
+    </div>
 
-      <!-- This div contents shown, if viewer has not logged in or authenticated -->
-      <div class="container" sec:authorize="!isAuthenticated()">
-        <div class="row">
-          <div class="col-8"></div>
-          <div class="col-4">
-            <a th:href="@{/login}" class="col btn btn-outline-primary" style="
+    <!-- This div contents shown, if viewer has not logged in or authenticated -->
+    <div class="container" sec:authorize="!isAuthenticated()">
+      <div class="row">
+        <div class="col-8"></div>
+        <div class="col-4">
+          <a th:href="@{/login}" class="col btn btn-outline-primary" style="
             margin-top: 20px;">Login as Admin <i class="bi bi-box-arrow-in-right"></i></a>
-          </div>
         </div>
-        <br />
-        <br />
       </div>
-    </header>
-  </body>
+      <br />
+      <br />
+    </div>
+  </header>
+</body>
+
 </html>

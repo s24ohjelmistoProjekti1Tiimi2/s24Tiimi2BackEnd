@@ -55,7 +55,7 @@ public class SoftDeleteController {
         manufacturer.setDeleted(true);
         manufacturerRepository.save(manufacturer);
         return "redirect:/manufacturerlist";
-    }  
+    }
 
     // Restore manufacturer
     @PostMapping("/restore-manufacturer/{id}")

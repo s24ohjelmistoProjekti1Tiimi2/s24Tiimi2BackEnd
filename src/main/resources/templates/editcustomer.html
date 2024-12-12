@@ -22,8 +22,8 @@
         }
 
         h1 {
-			margin-bottom: 20px;
-		}
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
@@ -35,24 +35,25 @@
             <form th:object="${customer}" th:action="@{/saveupdate}" action="#" method="post">
                 <input type="hidden" th:field="*{id}">
                 <div class="mb-3 d-flex align-items-center">
-                <label for="firstname">First name: </label>
-                <input type="text" id="firstname" th:field="*{firstname}" />
+                    <label for="firstname">First name: </label>
+                    <input type="text" id="firstname" th:field="*{firstname}" />
                 </div>
                 <div class="mb-3 d-flex align-items-center">
-                <label for="lastname">Last name: </label>
-                <input type="text" id="lastname" th:field="*{lastname}" />
+                    <label for="lastname">Last name: </label>
+                    <input type="text" id="lastname" th:field="*{lastname}" />
                 </div>
                 <div class="mb-3 d-flex align-items-center">
-                <label for="email">Email: </label>
-                <input type="text" id="email" th:field="*{email}" />
-                <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</td>
+                    <label for="email">Email: </label>
+                    <input type="text" id="email" th:field="*{email}" />
+                    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</td>
                 </div>
                 <button type="submit" class="btn btn-success">Save</button>
-                <button type="button" onclick="location.href='/customerlist'" class="btn btn-danger btn-smaller">Cancel</button>
+                <button type="button" onclick="location.href='/customerlist'"
+                    class="btn btn-danger btn-smaller">Cancel</button>
             </form>
         </div>
-            <a href="/home" class="btn btn-dark btn-smaller" style="margin-top: 20px; margin-bottom: 20px;">Back
-				to homepage</a>
+        <a href="/home" class="btn btn-dark btn-smaller" style="margin-top: 20px; margin-bottom: 20px;">Back
+            to homepage</a>
     </div>
 </body>
 

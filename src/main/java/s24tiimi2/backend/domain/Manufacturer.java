@@ -59,7 +59,7 @@ public class Manufacturer {
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Manufacturer [id=" + id + ", name=" + name + "]";
@@ -72,6 +72,5 @@ public class Manufacturer {
 	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
-
 
 }

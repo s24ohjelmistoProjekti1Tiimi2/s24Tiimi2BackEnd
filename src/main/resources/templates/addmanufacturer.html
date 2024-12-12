@@ -9,7 +9,7 @@
 
     <style>
         .container {
-            margin-top: 20px; 
+            margin-top: 20px;
             margin-bottom: 20px;
         }
 
@@ -21,23 +21,24 @@
 
 <body>
     <div class="container">
-    <h1>Add new manufacturer</h1>
-    <div>
-        <!-- Form for adding a new Manufacturer and filling in the details -->
-        <form th:object="${manufacturer}" th:action="@{/savemanufacturer}" action="#" method="post">
-            <div class="mb-3">
-            <label for="name">Manufacturer name:</label>
-                <input type="text" id="name" th:field="*{name}" />
-                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger">Name error</div>
-            </div>
-            <button type="submit" class="btn btn-primary btn-smaller">Save</button>
-            <button type="button" onclick="location.href='/manufacturerlist'" class="btn btn-danger btn-smaller">Cancel</button>
-        </form>
+        <h1>Add new manufacturer</h1>
+        <div>
+            <!-- Form for adding a new Manufacturer and filling in the details -->
+            <form th:object="${manufacturer}" th:action="@{/savemanufacturer}" action="#" method="post">
+                <div class="mb-3">
+                    <label for="name">Manufacturer name:</label>
+                    <input type="text" id="name" th:field="*{name}" />
+                    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger">Name error</div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-smaller">Save</button>
+                <button type="button" onclick="location.href='/manufacturerlist'"
+                    class="btn btn-danger btn-smaller">Cancel</button>
+            </form>
+        </div>
+        <br>
+        <a href="/home" class="btn btn-dark btn-smaller" style="margin-top: 10px; margin-bottom: 20px;">Back
+            to homepage</a>
     </div>
-    <br>
-    <a href="/home" class="btn btn-dark btn-smaller" style="margin-top: 10px; margin-bottom: 20px;">Back
-        to homepage</a>
-</div>
 </body>
 
 </html>

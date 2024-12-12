@@ -79,8 +79,6 @@ public class ManufacturerController {
         }
     }
 
-    // Products by manufacturer endpoints
-
     // Find all manufacturers
     @GetMapping("/productsbymanufacturer")
     public String showSearch(Model model) {

@@ -12,12 +12,14 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
 	List<Product> findByManufacturer_Id(Long manufacturerId);
 
+	// for deleting only if don't have products
 	boolean existsByManufacturerId(Long manufacturerId);
 
+	// seperating to active and deleted acording deleted value in database
 	@Query("SELECT p FROM Product p WHERE p.deleted = false")
-    List<Product> findAllActive();
+	List<Product> findAllActive();
 
 	@Query("SELECT p FROM Product p WHERE p.deleted = true")
 	List<Product> findAllDeleted();
-	
+
 }

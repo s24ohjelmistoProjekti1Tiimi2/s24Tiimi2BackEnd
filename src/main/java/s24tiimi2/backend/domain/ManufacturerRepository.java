@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ManufacturerRepository extends CrudRepository<Manufacturer, Long> {
     
+    // seperating to active and deleted acording deleted value in database
     @Query("SELECT m FROM Manufacturer m WHERE m.deleted = false")
     List<Manufacturer> findAllActive();
 

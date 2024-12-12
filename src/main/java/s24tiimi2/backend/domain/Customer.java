@@ -19,9 +19,9 @@ public class Customer {
     @NotEmpty
     private String email;
 
+    // for partial/soft delete
     private boolean deleted = false;
-    
-    
+
     public Customer() {
     }
 
@@ -76,6 +76,5 @@ public class Customer {
         return "Customer [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
                 + ", deleted=" + deleted + "]";
     }
-
 
 }

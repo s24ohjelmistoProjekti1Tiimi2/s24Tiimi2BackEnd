@@ -51,14 +51,16 @@
 				<div class="mb-3 d-flex align-items-center">
 					<label for="name">Name</label>
 					<input type="text" id="productName" th:field="*{name}" />
-					<div class="text-danger ms-3" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+					<div class="text-danger ms-3" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error
+					</div>
 				</div>
 
 				<div class="mb-3 d-flex align-items-center">
 					<label for="typelist">Type</label>
 					<select id="typelist" th:field="*{type}" class="form-control" required>
 						<option th:each="type: ${types}" th:value="${type.id}" th:text="${type.name}"></option>
-						<div th:if="${#fields.hasErrors('type')}" th:errors="*{type}" class="text-danger ms-3">Type error</div>
+						<div th:if="${#fields.hasErrors('type')}" th:errors="*{type}" class="text-danger ms-3">Type
+							error</div>
 					</select>
 				</div>
 
@@ -81,21 +83,23 @@
 				<div class="mb-3 d-flex align-items-center">
 					<label for="price">Price</label>
 					<input type="text" id="price" th:field="*{price}" />
-					<div th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger ms-3">Price error</div>
+					<div th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger ms-3">Price error
+					</div>
 				</div>
 
-					<div class="mb-3 d-flex align-items-center">
+				<div class="mb-3 d-flex align-items-center">
 					<label for="manufacturerlist">Manufacturer</label>
 					<select id="manufacturerlist" th:field="*{manufacturer}" class="form-control" required>
 						<option th:each="manufacturer: ${manufacturers}" th:value="${manufacturer.id}"
 							th:text="${manufacturer.name}"></option>
 					</select>
 				</div>
-				
+
 				<br>
 
 				<input type="submit" class="btn btn-success" value="Save"></input>
-				<button type="button" onclick="location.href='/productlist'" class="btn btn-danger btn-smaller">Cancel</button>
+				<button type="button" onclick="location.href='/productlist'"
+					class="btn btn-danger btn-smaller">Cancel</button>
 			</form>
 			<br>
 			<a href="/home" class="btn btn-dark btn-smaller" style="margin-top: 10px; margin-bottom: 20px;">Back

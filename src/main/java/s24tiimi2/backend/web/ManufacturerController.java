@@ -41,7 +41,7 @@ public class ManufacturerController {
         return "addmanufacturer";
     }
 
-    // Delete manufacturer
+    // Permanently delete manufacturer
     @GetMapping("/delete-manufacturer/{id}")
     public String deleteManufacturer(@PathVariable("id") Long manufacturerId, Model model) {
         if (productRepository.existsByManufacturerId(manufacturerId)) {
@@ -71,6 +71,7 @@ public class ManufacturerController {
         return "editmanufacturer";
     }
 
+    // Save edited manufacturer
     @PostMapping("/saveedit")
     public String saveEditedManufacturer(@Valid @ModelAttribute("manufacturer") Manufacturer manufacturer,
             BindingResult bindingResult) {
@@ -82,7 +83,7 @@ public class ManufacturerController {
         }
     }
 
-    // Products by a manufacturer endpoints
+    // Products by manufacturer endpoints
 
     // Find all manufacturers
     @GetMapping("/productsbymanufacturer")

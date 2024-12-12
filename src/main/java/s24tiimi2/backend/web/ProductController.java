@@ -28,6 +28,7 @@ public class ProductController {
     @Autowired
     private TypeRepository typeRepository;
 
+    // Show home-page
     @GetMapping({ "/home", "/" })
     public String getHomePage() {
         return "index";

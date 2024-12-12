@@ -25,7 +25,7 @@ public class SoftDeleteController {
     @Autowired
     private CustomerRepository customerRepository;
 
-    // Show deleted products and manufacturers
+    // Show soft-deleted products, manufacturers and customers
     @GetMapping("/deleted")
     public String getDeletedProducts(Model model) {
         model.addAttribute("products", productRepository.findAllDeleted());
@@ -34,7 +34,7 @@ public class SoftDeleteController {
         return "deleted";
     }
 
-    // Soft delete product
+    // Soft-delete product
     @GetMapping("/softdelete-product/{id}")
     public String softDeleteProduct(@PathVariable("id") Long prodId, Model model) {
         Product product = productRepository.findById(prodId).get();
@@ -43,7 +43,7 @@ public class SoftDeleteController {
         return "redirect:/productlist";
     }
 
-    // Soft delete manufacturer
+    // Soft-delete manufacturer
     @GetMapping("/softdelete-manufacturer/{id}")
     public String softDeleteManufacturer(@PathVariable("id") Long manufacturerId, Model model) {
         model.addAttribute("manufacturers", manufacturerRepository.findAll());
@@ -57,7 +57,7 @@ public class SoftDeleteController {
         return "redirect:/manufacturerlist";
     }  
 
-    // restore manufacturer
+    // Restore manufacturer
     @PostMapping("/restore-manufacturer/{id}")
     public String restoreDeletedManufacturer(@PathVariable("id") Long manufacturerId) {
         Manufacturer manufacturer = manufacturerRepository.findById(manufacturerId).get();
@@ -66,7 +66,7 @@ public class SoftDeleteController {
         return "redirect:/manufacturerlist";
     }
 
-    // restore product
+    // Restore product
     @PostMapping("/restore-product/{id}")
     public String restoreDeletedProduct(@PathVariable("id") Long productId) {
         Product product = productRepository.findById(productId).get();

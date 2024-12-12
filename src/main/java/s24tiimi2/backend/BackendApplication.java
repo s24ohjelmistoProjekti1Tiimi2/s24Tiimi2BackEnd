@@ -15,7 +15,6 @@ import s24tiimi2.backend.domain.ProductRepository;
 
 import s24tiimi2.backend.domain.TypeRepository;
 
-// @EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
 @SpringBootApplication
 public class BackendApplication {
 

@@ -41,6 +41,7 @@
 		<h1>Edit Product</h1>
 
 		<div>
+			<!-- Form for editing an existing Product and saving the edited one -->
 			<form th:object="${product}" th:action="@{/savemodified}" action="#" method="post">
 				<!-- Hidden field for productId -->
 				<input type="hidden" th:field="*{id}" />

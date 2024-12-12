@@ -15,7 +15,10 @@
   </head>
 
   <body>
+    <!-- Content of this fragment is a page header -->
     <header th:fragment="headerfragment">
+
+      <!-- This div contents shown, if viewer has logged in as Admin -->
       <div class="container" sec:authorize="hasAuthority('ADMIN')">
         <div class="row" style="margin-top: 20px;">
           <div class="col">
@@ -38,6 +41,7 @@
         </div>
       </div>
 
+      <!-- This div contents shown, if viewer has not logged in or authenticated -->
       <div class="container" sec:authorize="!isAuthenticated()">
         <div class="row">
           <div class="col-8"></div>

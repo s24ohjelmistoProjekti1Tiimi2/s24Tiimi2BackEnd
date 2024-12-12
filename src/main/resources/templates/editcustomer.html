@@ -31,6 +31,7 @@
     <div class="container">
         <h1>Edit customer</h1>
         <div>
+            <!-- Form for editing an existing Customer and saving the edited one -->
             <form th:object="${customer}" th:action="@{/saveupdate}" action="#" method="post">
                 <input type="hidden" th:field="*{id}">
                 <div class="mb-3 d-flex align-items-center">

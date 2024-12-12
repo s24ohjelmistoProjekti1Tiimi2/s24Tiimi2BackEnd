@@ -23,6 +23,7 @@
     <div class="container">
     <h1>Add new manufacturer</h1>
     <div>
+        <!-- Form for adding a new Manufacturer and filling in the details -->
         <form th:object="${manufacturer}" th:action="@{/savemanufacturer}" action="#" method="post">
             <div class="mb-3">
             <label for="name">Manufacturer name:</label>

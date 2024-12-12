@@ -30,6 +30,7 @@
     <div class="container">
         <h1>Edit Manufacturer</h1>
         <div>
+            <!-- Form for editing an existing Manufacturer and saving the edited one -->
             <form th:object="${manufacturer}" th:action="@{/saveedit}" action="#" method="post">
                 <input type="hidden" th:field="*{id}" />
                 <div class="mb-3 d-flex align-items-center">

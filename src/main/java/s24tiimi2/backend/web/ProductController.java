@@ -11,7 +11,6 @@ import s24tiimi2.backend.domain.ProductRepository;
 import s24tiimi2.backend.domain.TypeRepository;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.validation.Valid;
@@ -52,7 +51,7 @@ public class ProductController {
 
     // Save new product
     @PostMapping("/saveproduct")
-    public String saveNewProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult,
+    public String saveNewProduct(@Valid Product product, BindingResult bindingResult,
             Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("manufacturers", manufacturerRepository.findAll());
@@ -89,7 +88,7 @@ public class ProductController {
 
     // Save edited product
     @PostMapping("/savemodified")
-    public String saveModified(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult,
+    public String saveModified(@Valid Product product, BindingResult bindingResult,
             Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("manufacturers", manufacturerRepository.findAll());
@@ -103,7 +102,7 @@ public class ProductController {
 
     // Save edited stock on product
     @PostMapping("/savestock")
-    public String saveStock(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult,
+    public String saveStock(@Valid Product product, BindingResult bindingResult,
             Model model) {
         if (bindingResult.hasErrors()) {
             return "editstock";

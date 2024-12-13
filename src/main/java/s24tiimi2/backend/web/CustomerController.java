@@ -5,13 +5,13 @@ import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-
-import s24tiimi2.backend.domain.Customer;
-import s24tiimi2.backend.domain.CustomerRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import s24tiimi2.backend.domain.Customer;
+import s24tiimi2.backend.domain.CustomerRepository;
 
 import jakarta.validation.Valid;
 
@@ -37,7 +37,7 @@ public class CustomerController implements ErrorController {
 
     // Save new customer
     @PostMapping("/savecustomer")
-    public String saveCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult,
+    public String saveCustomer(@Valid Customer customer, BindingResult bindingResult,
             Model model) {
         if (bindingResult.hasErrors()) {
             return "addcustomer";
@@ -63,8 +63,7 @@ public class CustomerController implements ErrorController {
 
     // Save edited customer
     @PostMapping("/saveupdate")
-    public String saveEditedCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult,
-            Model model) {
+    public String saveEditedCustomer(@Valid Customer customer, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "editcustomer";
         } else {
